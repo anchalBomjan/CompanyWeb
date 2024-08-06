@@ -3,6 +3,8 @@
     public interface IRoleRepository
     {
 
-        Task SeedRolesAsync();
+        Task  SeedRolesAsync();
+        Task<bool> AssignRoleToUserAsync(string username, string rolename);
+
     }
 }

@@ -37,5 +37,32 @@ namespace WebApp.API.Controllers
             }
         }
 
+
+
+
+
+
+        [HttpPost("AssignRole")]
+        public async Task<IActionResult> AssignRoleToUser([FromQuery] string username, [FromQuery] string roleName)
+        {
+            try
+            {
+                var success = await _roleRepository.AssignRoleToUserAsync(username, roleName);
+
+                if (success)
+                {
+                    return Ok("Role assigned successfully.");
+                }
+                else
+                {
+                    return BadRequest("Failed to assign role.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
+        }
+
     }
 }

@@ -25,6 +25,8 @@ namespace WebApp.API.Repositories.IRepository
                     throw new InvalidOperationException("Unable to create a SQL connection.");
                 }
 
+
+
                 try
                 {
                     await dbConnection.OpenAsync(); // Asynchronously open the connection
@@ -51,7 +53,9 @@ namespace WebApp.API.Repositories.IRepository
                                 "INSERT INTO Roles (RoleName) VALUES (@RoleName)",
                                 new { RoleName = roleName }
                             );
+                           
                         }
+
                     }
                 }
                 catch (Exception ex)
@@ -60,9 +64,79 @@ namespace WebApp.API.Repositories.IRepository
                     Console.WriteLine($"An error occurred: {ex.Message}");
                     throw; // Optionally rethrow the exception
                 }
+
+
+              
             }
         }
 
+
+
+
+        public async Task<bool> AssignRoleToUserAsync(string username, string roleName)
+        {
+            if (string.IsNullOrEmpty(username))
+                throw new ArgumentException("Username cannot be null or empty.", nameof(username));
+
+            if (string.IsNullOrEmpty(roleName))
+                throw new ArgumentException("Role name cannot be null or empty.", nameof(roleName));
+
+            using (var connection = _dbConnector.CreateConnection() as SqlConnection)
+            {
+                await connection.OpenAsync(); // Ensure the connection is open
+
+                using (var transaction = connection.BeginTransaction())
+                {
+                    try
+                    {
+                        // Retrieve the user ID
+                        var userId = await connection.QuerySingleOrDefaultAsync<int>(
+                            "SELECT Id FROM Users WHERE Username = @Username",
+                            new { Username = username },
+                            transaction: transaction
+                        );
+
+                        if (userId == 0)
+                        {
+                            throw new InvalidOperationException("User not found.");
+                        }
+
+                        // Retrieve the role ID
+                        var roleId = await connection.QuerySingleOrDefaultAsync<int>(
+                            "SELECT Id FROM Roles WHERE RoleName = @RoleName",
+                            new { RoleName = roleName },
+                            transaction: transaction
+                        );
+
+                        if (roleId == 0)
+                        {
+                            throw new InvalidOperationException("Role not found.");
+                        }
+
+                        // Assign the role to the user
+                        var rowsAffected = await connection.ExecuteAsync(
+                            "INSERT INTO UserRoles (UserId, RoleId) VALUES (@UserId, @RoleId)",
+                            new { UserId = userId, RoleId = roleId },
+                            transaction: transaction
+                        );
+
+                        // Commit the transaction
+                        transaction.Commit();
+
+                        return rowsAffected > 0;
+                    }
+                    catch
+                    {
+                        // Rollback the transaction if any error occurs
+                        transaction.Rollback();
+                        throw;
+                    }
+                }
+            }
+        }
+
+       
+        
     }
 }
 
