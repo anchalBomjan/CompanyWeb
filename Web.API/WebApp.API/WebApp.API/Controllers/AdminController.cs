@@ -15,21 +15,25 @@ namespace WebApp.API.Controllers
 
         private readonly  IRoleRepository _roleRepository;
 
-        public AdminController(IRoleRepository rolerepository)
+        private readonly IUserRepository _userRepository;
+
+        public AdminController(IRoleRepository rolerepository,IUserRepository userRepository)
         {
             _roleRepository = rolerepository;
+            _userRepository = userRepository;
              
         }
 
+
+
         [HttpPost("SeedRoles")]
-       
+
         public async Task<IActionResult> SeedRoles()
         {
             try
             {
-                // Assuming _roleSeeder is injected in the controller
-                await _roleRepository.SeedRolesAsync();
-                return Ok("Roles seeded successfully");
+                var messages = await _roleRepository.SeedRolesAsync();
+                return Ok(new { Messages = messages });
             }
             catch (Exception ex)
             {
@@ -62,7 +66,77 @@ namespace WebApp.API.Controllers
             {
                 return StatusCode(500, new { Message = ex.Message });
             }
+
         }
+
+
+        [HttpGet("GetAllRoles")]
+        public async Task<IActionResult> GetAllRoles()
+        {
+            try
+            {
+                var roles = await _roleRepository.GetAllRolesAsync();
+                return Ok(roles);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
+        }
+
+
+
+
+        [HttpGet("GetAllUsersWithRoles")]
+        public async Task<IActionResult> GetAllUsersWithRoles()
+        {
+            try
+            {
+                var usersWithRoles = await _userRepository.GetAllUsersWithRolesAsync();
+                return Ok(usersWithRoles);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
+        }
+
+
+        [HttpPost("RemoveRoleFromUser")]
+        public async Task<IActionResult> RemoveRoleFromUser([FromQuery] string username, [FromQuery] string roleName)
+        {
+            try
+            {
+                var success = await _roleRepository.RemoveRoleFromUserRolesAsync(username, roleName);
+                if (success)
+                {
+                    return Ok(new { Message = "Role removed successfully." });
+                }
+                else
+                {
+                    return BadRequest(new { Message = "User or Role not found." });
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = ex.Message });
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }

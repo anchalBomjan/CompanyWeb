@@ -3,6 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using WebApp.API.Models;
+using WebApp.API.Models.DTOs;
 
 namespace WebApp.API.Services
 {
@@ -22,12 +23,21 @@ namespace WebApp.API.Services
 
         public string GenerateToken(User user)
         {
-            var claims = new[]
+            var claims = new List<Claim>
             {
             new Claim(JwtRegisteredClaimNames.Sub, user.Username),
             new Claim(JwtRegisteredClaimNames.Email, user.Email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
+
+            // Include roles if available
+            if (user.Roles != null && user.Roles.Any())
+            {
+                foreach (var role in user.Roles)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, role.RoleName));
+                }
+            }
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
@@ -36,6 +46,7 @@ namespace WebApp.API.Services
                 issuer: _issuer,
                 audience: _audience,
                 claims: claims,
+              
                 expires: DateTime.Now.AddHours(1),
                 signingCredentials: creds);
 
