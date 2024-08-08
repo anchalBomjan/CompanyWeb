@@ -7,6 +7,10 @@ namespace WebApp.API.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
+        public EmployeeController()
+        {
+             
+        }
 
     }
 }

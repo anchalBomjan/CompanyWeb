@@ -18,10 +18,6 @@ namespace WebApp.API.Controllers
             _authenticationService = authenticationService;
         }
 
-
-
-
-
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
@@ -86,8 +82,6 @@ namespace WebApp.API.Controllers
 
 
         }
-
-
 
     }
 }

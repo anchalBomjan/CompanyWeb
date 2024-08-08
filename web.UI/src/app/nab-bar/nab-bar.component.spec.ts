@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AssignJobComponent } from './assign-job.component';
+import { NabBarComponent } from './nab-bar.component';
 
-describe('AssignJobComponent', () => {
-  let component: AssignJobComponent;
-  let fixture: ComponentFixture<AssignJobComponent>;
+describe('NabBarComponent', () => {
+  let component: NabBarComponent;
+  let fixture: ComponentFixture<NabBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AssignJobComponent]
+      imports: [NabBarComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(AssignJobComponent);
+    fixture = TestBed.createComponent(NabBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
