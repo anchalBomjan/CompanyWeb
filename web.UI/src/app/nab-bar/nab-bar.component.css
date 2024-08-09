@@ -1,0 +1,29 @@
+/* nab-bar.component.css */
+
+/* nab-bar.component.css */
+
+.navbar {
+    background-color: #ff5733; /* Background color */
+  }
+  
+  .navbar-light .navbar-nav .nav-link {
+    color: #ffffff; /* Text color for nav links */
+  }
+  
+  .navbar-light .navbar-brand {
+    color: #ffffff; /* Text color for brand */
+  }
+  
+  .dropdown-menu {
+    background-color: #ff5733; /* Background color for dropdown menu */
+  }
+  
+  .dropdown-item {
+    color: #ffffff; /* Text color for dropdown items */
+  }
+  
+  .dropdown-item:hover {
+    background-color: #c70039; /* Background color on hover */
+    color: #ffffff; /* Text color on hover */
+  }
+  
