@@ -17,10 +17,14 @@ export class RegistrationComponent {
 
 
   registerRequest:IRegisterRequest;
+  passwordVisible = false;
 
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
   
   
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService,private router:Router) {
     this.registerRequest = {
       username: '',
       email: '',
@@ -35,6 +39,9 @@ export class RegistrationComponent {
       response => {
         console.log('Registration successful', response);
         // Handle successful registration (e.g., navigate to login)
+
+        this.router.navigate(['/app-hr']);
+
       }
     
     );

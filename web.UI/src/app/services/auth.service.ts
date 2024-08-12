@@ -11,21 +11,22 @@ import { IRegisterRequest } from '../interface/RegisterRequest';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://localhost:44386';
+  
 
+  private apiUrl = 'https://localhost:44386/api/Auth'; // Updated base URL
   constructor(private http:HttpClient) { }
+
+
   register(registerRequest: IRegisterRequest): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/register`, registerRequest)
-    
-      
+    return this.http.post<any>(`${this.apiUrl}/register`, registerRequest);
   }
 
-
-
    // Login method
-   login(loginrequest:ILoginRequest): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, loginrequest)
-      
+  
+
+
+   login(loginrequest: ILoginRequest): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, loginrequest);
   }
 
   // Error handling

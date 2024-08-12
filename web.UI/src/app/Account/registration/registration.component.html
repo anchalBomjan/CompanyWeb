@@ -1,55 +1,61 @@
-<form (ngSubmit)="onSubmit()" #registerForm="ngForm">
-    <div class="form-field">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]="registerRequest.username" name="username" required>
-        <div *ngIf="registerForm.form.controls['username']?.invalid && registerForm.form.controls['username']?.touched" class="text-danger">
-          Username is required
-        </div>
+<!-- Register Form -->
+<div class="card mx-auto mt-5 p-4 shadow-lg" style="max-width: 500px;">
+  <h3 class="card-title text-center">Register</h3>
+  <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+    <!-- Username Field -->
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" [(ngModel)]="registerRequest.username" name="username" required>
+      <div *ngIf="registerForm.form.controls['username']?.invalid && registerForm.form.controls['username']?.touched" class="text-danger">
+        Username is required
       </div>
     </div>
-  
-    <div class="form-field">
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" [(ngModel)]="registerRequest.email" name="email" required>
-        <div *ngIf="registerForm.form.controls['email']?.invalid && registerForm.form.controls['email']?.touched" class="text-danger">
-          <span *ngIf="registerForm.form.controls['email']?.errors?.['required']">Email is required</span>
-          <span *ngIf="registerForm.form.controls['email']?.errors?.['email']">Invalid email address</span>
-        </div>
+
+    <!-- Email Field -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" [(ngModel)]="registerRequest.email" name="email" required>
+      <div *ngIf="registerForm.form.controls['email']?.invalid && registerForm.form.controls['email']?.touched" class="text-danger">
+        <span *ngIf="registerForm.form.controls['email']?.errors?.['required']">Email is required</span>
+        <span *ngIf="registerForm.form.controls['email']?.errors?.['email']">Invalid email address</span>
       </div>
     </div>
-  
-    <div class="form-field">
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]="registerRequest.password" name="password" required>
-        <div *ngIf="registerForm.form.controls['password']?.invalid && registerForm.form.controls['password']?.touched" class="text-danger">
-          Password is required
+
+    <!-- Password Field -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <div class="input-group">
+        <input [type]="passwordVisible ? 'text' : 'password'" class="form-control" id="password" [(ngModel)]="registerRequest.password" name="password" required>
+        <div class="input-group-append">
+          <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()">
+            <i [ngClass]="passwordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+          </button>
         </div>
       </div>
-    </div>
-  
-    <div class="form-field">
-      <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" class="form-control" id="firstName" [(ngModel)]="registerRequest.firstName" name="firstName" required>
-        <div *ngIf="registerForm.form.controls['firstName']?.invalid && registerForm.form.controls['firstName']?.touched" class="text-danger">
-          First Name is required
-        </div>
+      <div *ngIf="registerForm.form.controls['password']?.invalid && registerForm.form.controls['password']?.touched" class="text-danger">
+        Password is required
       </div>
     </div>
-  
-    <div class="form-field">
-      <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" class="form-control" id="lastName" [(ngModel)]="registerRequest.lastName" name="lastName" required>
-        <div *ngIf="registerForm.form.controls['lastName']?.invalid && registerForm.form.controls['lastName']?.touched" class="text-danger">
-          Last Name is required
-        </div>
+
+    <!-- First Name Field -->
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" [(ngModel)]="registerRequest.firstName" name="firstName" required>
+      <div *ngIf="registerForm.form.controls['firstName']?.invalid && registerForm.form.controls['firstName']?.touched" class="text-danger">
+        First Name is required
       </div>
     </div>
-  
-    <button type="submit" class="btn btn-primary">Register</button>
+
+    <!-- Last Name Field -->
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" [(ngModel)]="registerRequest.lastName" name="lastName" required>
+      <div *ngIf="registerForm.form.controls['lastName']?.invalid && registerForm.form.controls['lastName']?.touched" class="text-danger">
+        Last Name is required
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-success btn-block mt-3" [disabled]="registerForm.form.invalid">Register</button>
   </form>
-  
+</div>

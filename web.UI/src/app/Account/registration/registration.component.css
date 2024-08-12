@@ -1,0 +1,25 @@
+/* register.component.css */
+.input-group {
+    position: relative;
+  }
+  
+  .input-group .input-group-append {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    z-index: 1;
+  }
+  
+  .input-group .btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none;
+    height: 100%;
+    padding: 0.25rem 0.5rem; /* Adjust padding to fit the input */
+  }
+  
+  .input-group .btn i {
+    font-size: 1rem; /* Adjust icon size */
+    line-height: 1;
+  }

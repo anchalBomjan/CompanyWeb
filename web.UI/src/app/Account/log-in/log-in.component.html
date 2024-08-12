@@ -1,24 +1,33 @@
-<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-    <div class="form-field">
-      <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" class="form-control" id="username" [(ngModel)]="loginRequest.username" name="username" required>
-        <div *ngIf="loginForm.form.controls['username']?.invalid && loginForm.form.controls['username']?.touched" class="text-danger">
-          Username is required
-        </div>
+<!-- Login Form -->
+<div class="card mx-auto mt-5 p-4 shadow-lg" style="max-width: 500px;">
+  <h3 class="card-title text-center">Log In</h3>
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <!-- Username Field -->
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" [(ngModel)]="loginrequest.username" name="username" required>
+      <div *ngIf="loginForm.form.controls['username']?.invalid && loginForm.form.controls['username']?.touched" class="text-danger">
+        Username is required
       </div>
     </div>
-  
-    <div class="form-field">
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" [(ngModel)]="loginRequest.password" name="password" required>
-        <div *ngIf="loginForm.form.controls['password']?.invalid && loginForm.form.controls['password']?.touched" class="text-danger">
-          Password is required
+
+    <!-- Password Field -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <div class="input-group">
+        <input [type]="passwordVisible ? 'text' : 'password'" class="form-control" id="password" [(ngModel)]="loginrequest.password" name="password" required>
+        <div class="input-group-append">
+          <button type="button" class="btn btn-outline-secondary" (click)="togglePasswordVisibility()" tabindex="-1">
+            <i [ngClass]="passwordVisible ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+          </button>
         </div>
       </div>
+      <div *ngIf="loginForm.form.controls['password']?.invalid && loginForm.form.controls['password']?.touched" class="text-danger">
+        Password is required
+      </div>
     </div>
-  
-    <button type="submit" class="btn btn-primary">Login</button>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-success btn-block mt-3" [disabled]="loginForm.form.invalid">Log In</button>
   </form>
-  
+</div>

@@ -1,29 +1,30 @@
-/* nab-bar.component.css */
-
-/* nab-bar.component.css */
+.navbar-brand img {
+  max-height: 40px; /* Adjust the height to fit your navbar */
+  width: auto; /* Maintain aspect ratio */
+  padding-right: 10px; /* Add some padding if needed */
+}
 
 .navbar {
-    background-color: #ff5733; /* Background color */
-  }
-  
-  .navbar-light .navbar-nav .nav-link {
-    color: #ffffff; /* Text color for nav links */
-  }
-  
-  .navbar-light .navbar-brand {
-    color: #ffffff; /* Text color for brand */
-  }
-  
-  .dropdown-menu {
-    background-color: #ff5733; /* Background color for dropdown menu */
-  }
-  
-  .dropdown-item {
-    color: #ffffff; /* Text color for dropdown items */
-  }
-  
-  .dropdown-item:hover {
-    background-color: #c70039; /* Background color on hover */
-    color: #ffffff; /* Text color on hover */
-  }
-  
+  background-color: #90EE90; /* Light green background color */
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff; /* White text color for nav links */
+}
+
+.navbar-light .navbar-brand {
+  color: #ffffff; /* White text color for brand */
+}
+
+.dropdown-menu {
+  background-color: #90EE90; /* Light green background color for dropdown menu */
+}
+
+.dropdown-item {
+  color: #ffffff; /* White text color for dropdown items */
+}
+
+.dropdown-item:hover {
+  background-color: #66CDAA; /* Darker light green background color on hover */
+  color: #ffffff; /* White text color on hover */
+}
