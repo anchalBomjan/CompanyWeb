@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ILoginRequest } from '../../interface/LoginRequest';
 import { AuthService } from '../../services/auth.service';
-import jwt_decode from 'jwt-decode';
+
 import { Router } from '@angular/router';
 
 @Component({
@@ -20,7 +20,7 @@ loginrequest:ILoginRequest;
 
 
 passwordVisible = false;
-constructor(private authservice: AuthService,private toastr:ToastrService,private route:Router ){
+constructor(private authservice: AuthService,private toastr:ToastrService,private router:Router ){
   this.loginrequest={
     username: '',
     password: ''
@@ -40,12 +40,11 @@ togglePasswordVisibility() {
       } else {
         this.toastr.error("Login failed. Token not found.");
       }
-      
-
-       
+    }
 
 
-     }
+
+     
      
 
    );
