@@ -30,25 +30,56 @@ constructor(private authservice: AuthService,private toastr:ToastrService,privat
 togglePasswordVisibility() {
   this.passwordVisible = !this.passwordVisible;
 }
- onSubmit(){
-   this.authservice.login(this.loginrequest).subscribe(
-     response=>{
+//  onSubmit(){
+//    this.authservice.login(this.loginrequest).subscribe(
+//      response=>{
+//       // console.log('Login Response:', response);
+//       // if(response.token) {
+//       //   this.toastr.success("Successfully Logged In");
+//       //   console.log('Token:', response.token);
+//       // } else {
+//       //   this.toastr.error("Login failed. Token not found.");
+//       // }
+//      }
+     
+
+//    );
+//  }
+
+onSubmit() {
+  this.authservice.login(this.loginrequest).subscribe({
+    next: (response) => {
       console.log('Login Response:', response);
-      if(response.token) {
-        this.toastr.success("Successfully Logged In");
+      if (response.token) {
+        this.authservice.storeToken(response.token); // Store the token
+        this.toastr.success('Successfully Logged In');
         console.log('Token:', response.token);
+
+        const userRole = this.authservice.decodeToken(response.token)["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"];
+
+        if (userRole === 'Admin') {
+          this.router.navigate(['/app-admin']);
+        } else if (userRole === 'HR') {
+          this.router.navigate(['/app-hr']);
+        } else if (userRole === 'User') {
+          this.router.navigate(['/app-user']);
+        } else {
+          this.toastr.error('Role not recognized. Access denied.');
+        }
       } else {
-        this.toastr.error("Login failed. Token not found.");
+        this.toastr.error('Login failed. Token not found.');
       }
+    },
+    error: (error) => {
+      console.error('Login error:', error);
+      this.toastr.error('Login failed. Please check your credentials.');
+    },
+    complete: () => {
+      console.log('Login request completed');
     }
+  });
+}
 
-
-
-     
-     
-
-   );
- }
 
 
 }
