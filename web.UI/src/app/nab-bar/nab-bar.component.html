@@ -29,7 +29,7 @@
     </div>
   </div>
 </nav> -->
-
+<!-- 
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">
@@ -47,7 +47,46 @@
           <a class="nav-link" routerLink="/about">About</a>
         </li>
       </ul>
-      <!-- Adjusted position of the li elements and added wrapping ul -->
+   
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown" *ngIf="isLoggedIn()" bsDropdown>
+          <a class="nav-link dropdown-toggle" bsDropdownToggle aria-expanded="false">
+            Hello, {{ userRole }}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" *bsDropdownMenu>
+            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown" *ngIf="!isLoggedIn()" bsDropdown>
+          <a class="nav-link dropdown-toggle" bsDropdownToggle aria-expanded="false">
+            Account
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" *bsDropdownMenu>
+            <li><a class="dropdown-item" routerLink="/login">Log In</a></li>
+            <li><a class="dropdown-item" routerLink="/signup">Sign Up</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav> -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="assets/images/Logo.png" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/about">About</a>
+        </li>
+      </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item dropdown" *ngIf="isLoggedIn()" bsDropdown>
           <a class="nav-link dropdown-toggle" bsDropdownToggle aria-expanded="false">

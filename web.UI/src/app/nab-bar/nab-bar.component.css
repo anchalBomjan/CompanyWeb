@@ -1,11 +1,19 @@
+/* Navbar Styles */
+.navbar {
+  background-color: #90EE90; /* Light green background color */
+  position: fixed; /* Fix the navbar at the top */
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px; /* Fixed height for the navbar */
+  z-index: 1000; /* Ensure the navbar is above other elements */
+}
+
 .navbar-brand img {
   max-height: 40px; /* Adjust the height to fit your navbar */
   width: auto; /* Maintain aspect ratio */
   padding-right: 10px; /* Add some padding if needed */
-}
-
-.navbar {
-  background-color: #90EE90; /* Light green background color */
+  height: 60px; /* Fixed height for the navbar */
 }
 
 .navbar-light .navbar-nav .nav-link {
