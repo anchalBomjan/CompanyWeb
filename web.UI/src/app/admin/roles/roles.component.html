@@ -6,6 +6,14 @@
     <button class="btn btn-success" (click)="seedRoles()">Seed Roles</button>
   </div>
 
+ <!-- List of Roles Section -->
+ <div class="section">
+  <h3>Available Roles</h3>
+  <ul class="list-group">
+    <li *ngFor="let role of roles" class="list-group-item">{{ role }}</li>
+  </ul>
+</div>
+
   <!-- Assign Role Section -->
   <div class="section">
     <h3>Assign Role to User</h3>
@@ -22,13 +30,8 @@
     </form>
   </div>
 
-  <!-- List of Roles Section -->
-  <div class="section">
-    <h3>Available Roles</h3>
-    <ul class="list-group">
-      <li *ngFor="let role of roles" class="list-group-item">{{ role.name }}</li>
-    </ul>
-  </div>
+
+
 
 <!-- Users with Roles Section -->
 <div class="section">

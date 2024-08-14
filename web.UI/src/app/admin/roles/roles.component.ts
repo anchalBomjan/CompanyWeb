@@ -40,15 +40,21 @@ export class RolesComponent {
      
     );
   }
-
   getAllRoles() {
-    this.adminService.getAllRoles().subscribe(
-      (data) => {
+    this.adminService.getAllRoles().subscribe({
+      next: (data) => {
+        console.log('Roles data:', data); // Debugging line
         this.roles = data;
+      },
+      error: (error) => {
+        console.error('Error fetching roles:', error);
+      },
+      complete: () => {
+        console.log('Role fetching completed');
       }
-     
-    );
+    });
   }
+
 
   getAllUsersWithRoles() {
     this.adminService.getAllUsersWithRoles().subscribe(
