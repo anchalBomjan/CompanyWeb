@@ -1,2 +1,50 @@
+<div class="admin-dashboard">
+  <div class="dashboard-sidebar">
+    <h6>Admin Dashboard</h6>
+    
+    <!-- Add Section -->
+    <div class="dropdown" bsDropdown>
+      <button type="button" class="btn btn-primary dropdown-toggle" bsDropdownToggle>
+        Add
+      </button>
+      <ul *bsDropdownMenu class="dropdown-menu">
+        <li><a class="dropdown-item" [routerLink]="['/app-admin/department']">Department</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/app-admin/designation']">Designation</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/app-admin/something-else']">Something else here</a></li>
+      </ul>
+    </div>
+    
+    <!-- Views Section -->
+    <div class="dropdown" bsDropdown>
+      <button type="button" class="btn btn-primary dropdown-toggle" bsDropdownToggle>
+        Views
+      </button>
+      <ul *bsDropdownMenu class="dropdown-menu">
+        <li><a class="dropdown-item" [routerLink]="['/app-admin/employees-with-salary']">EmployeesWithSalary</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/app-admin/designation']">Designation</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/app-admin/something-else']">Something else here</a></li>
+      </ul>
+    </div>
+    
+    <!-- Work of Roles Section -->
+    <div class="dropdown" bsDropdown>
+      <button type="button" class="btn btn-primary dropdown-toggle" bsDropdownToggle>
+        Work of Roles
+      </button>
+      <ul *bsDropdownMenu class="dropdown-menu">
+        <li><a class="dropdown-item" [routerLink]="['/app-admin/app-roles']">Roles Work</a></li>
+        
+      </ul>
+    </div>
+    
+    <!-- Additional Links -->
+    <div class="dashboard-links">
+      <a class="dropdown-item" [routerLink]="['/app-admin/users']">Users</a>
+      <a class="dropdown-item" [routerLink]="['/app-admin/settings']">Settings</a>
+    </div>
+  </div>
 
-<app-admin-dash-board></app-admin-dash-board>
+  <div class="dashboard-content">
+    <router-outlet></router-outlet> <!-- Correct syntax for child route rendering -->
+  </div>
+</div>

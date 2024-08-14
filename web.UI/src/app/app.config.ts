@@ -7,13 +7,16 @@ import { provideHttpClient } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),
+  providers: [
+    provideRouter(routes),
     provideHttpClient(),
-    BrowserAnimationsModule,
     provideAnimations(),
-
-importProvidersFrom(ToastrModule.forRoot())
+    importProvidersFrom(
+      BrowserAnimationsModule,
+      RouterModule, // Ensure RouterModule is provided
+      ToastrModule.forRoot()
+    ),
 
   
-  ]
+  ],
 };
