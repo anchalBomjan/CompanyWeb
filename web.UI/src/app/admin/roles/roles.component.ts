@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+// import { FormsModule } from '@angular/forms';
+
 import { AdminService } from '../../services/admin.service';
 
 @Component({
@@ -36,6 +38,10 @@ export class RolesComponent {
         console.log(response);
         alert('Role assigned successfully');
         this.getAllUsersWithRoles(); // Refresh users with roles list after assignment
+        
+        //  window.location.assign('/app-roles')
+          // Optionally reload the page
+         
       },
      
     );
@@ -82,6 +88,4 @@ export class RolesComponent {
     });
   }
   
-
-
 }

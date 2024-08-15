@@ -1,8 +1,11 @@
 
+import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { LogInComponent } from './Account/log-in/log-in.component';
 import { RegistrationComponent } from './Account/registration/registration.component';
 import { AdminComponent } from './admin/admin.component';
+import { DepartmentFormComponent } from './admin/department-form/department-form.component';
+import { DepartmentListComponent } from './admin/department-list/department-list.component';
 import { RolesComponent } from './admin/roles/roles.component';
 
 import { authGuard } from './guards/auth.guard';
@@ -25,7 +28,10 @@ export const routes: Routes = [
       { path: 'get-all-users-with-roles', component: RolesComponent }, // Example child route
       { path: 'remove-roles-from-user-role', component: RolesComponent }, // Example child route
       { path: 'users', component: RolesComponent }, // Example child route for Users
-      { path: 'settings', component: RolesComponent } // Example child route for Settings
+      { path: 'settings', component: RolesComponent } ,// Example child route for Settings
+      { path: 'app-department-list', component: DepartmentListComponent },
+      { path: 'Department/:id', component: DepartmentFormComponent },
+      {path:'',component:DepartmentFormComponent}
     ]
   },
 {path:'app-hr',component:HRComponent},

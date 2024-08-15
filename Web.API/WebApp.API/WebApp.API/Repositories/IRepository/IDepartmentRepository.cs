@@ -7,8 +7,10 @@ namespace WebApp.API.Repositories.IRepository
 
         Task<IEnumerable<Department>> GetAllDepartmentsAsync();
         Task<Department> GetDepartmentByIdAsync(int id);
+
         Task<Department>AddDepartmentAsync(Department department);
         Task<Department> UpdateDepartmentAsync(Department department);
+
         Task DeleteDepartmentAsync(int id);
 
     }
