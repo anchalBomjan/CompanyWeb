@@ -12,7 +12,7 @@ namespace WebApp.API.Controllers
     [Route("api/[controller]")]
     [ApiController]
  
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class DepartmentController : ControllerBase
     {
 
@@ -27,9 +27,13 @@ namespace WebApp.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetDepartments()
         {
+            //var departments = await _departmentRepository.GetAllDepartmentsAsync();
+            //var departmentDtos = _mapper.Map<IEnumerable<DepartmentDto>>(departments);
+            //return Ok(departmentDtos);
             var departments = await _departmentRepository.GetAllDepartmentsAsync();
-            var departmentDtos = _mapper.Map<IEnumerable<DepartmentDto>>(departments);
-            return Ok(departmentDtos);
+         
+
+            return Ok(departments);
         }
         [HttpGet("{id}")]
         public async Task<IActionResult>GetDepartment(int id)

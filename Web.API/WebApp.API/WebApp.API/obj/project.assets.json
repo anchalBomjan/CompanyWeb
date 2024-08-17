@@ -4074,23 +4074,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PERCOID-IT\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Anchal\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PERCOID-IT\\Desktop\\PercoidProject\\finance Company\\Web.API\\WebApp.API\\WebApp.API\\WebApp.API.csproj",
+      "projectUniqueName": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\WebApp.API.csproj",
       "projectName": "WebApp.API",
-      "projectPath": "C:\\Users\\PERCOID-IT\\Desktop\\PercoidProject\\finance Company\\Web.API\\WebApp.API\\WebApp.API\\WebApp.API.csproj",
-      "packagesPath": "C:\\Users\\PERCOID-IT\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PERCOID-IT\\Desktop\\PercoidProject\\finance Company\\Web.API\\WebApp.API\\WebApp.API\\obj\\",
+      "projectPath": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\WebApp.API.csproj",
+      "packagesPath": "C:\\Users\\Anchal\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\PERCOID-IT\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Anchal\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4110,6 +4106,11 @@
         "warnAsError": [
           "NU1605"
         ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -4182,7 +4183,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

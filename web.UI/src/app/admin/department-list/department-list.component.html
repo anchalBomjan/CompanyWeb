@@ -1,0 +1,33 @@
+
+
+  <div *ngIf="departments && departments.length > 0" class="table-responsive">
+    <div class="d-flex justify-content-end py-4">
+      <button (click)="addDepartment()" class="btn btn-primary">Add Department</button>
+    </div>
+  
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let department of departments; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ department.departmentId }}</td>
+          <td>{{ department.name }}</td>
+          <td>{{ department.description }}</td>
+          <td>
+            <button class="btn btn-primary me-2" (click)="department.departmentId !== undefined && edit(department.departmentId)">Edit</button>
+            <button class="btn btn-danger" (click)="department.departmentId !== undefined && delete(department.departmentId)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  
