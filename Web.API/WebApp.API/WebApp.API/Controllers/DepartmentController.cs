@@ -24,6 +24,8 @@ namespace WebApp.API.Controllers
              _departmentRepository = departmentRepository;
             _mapper = mapper;
         }
+
+        //In here we need All Details with Id  for edit and delete
         [HttpGet]
         public async Task<IActionResult> GetDepartments()
         {
@@ -31,7 +33,7 @@ namespace WebApp.API.Controllers
             //var departmentDtos = _mapper.Map<IEnumerable<DepartmentDto>>(departments);
             //return Ok(departmentDtos);
             var departments = await _departmentRepository.GetAllDepartmentsAsync();
-         
+
 
             return Ok(departments);
         }

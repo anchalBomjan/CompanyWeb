@@ -1,0 +1,49 @@
+<p>designation-form works!</p>
+<div class="container mt-5">
+    <div class="shadow p-4 form-container">
+      <h4>{{ isEdit ? 'Edit Designation Details' : 'Create Designation Form' }}</h4>
+  
+      <form (ngSubmit)="onSubmit()" #designationForm="ngForm">
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" id="title" class="form-control" [(ngModel)]="designation.title" name="title" required>
+          <div *ngIf="designationForm.form.controls['title']?.invalid && designationForm.form.controls['title']?.touched" class="text-danger">
+            Title is required
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="salary" class="form-label">Salary</label>
+          <input type="number" id="salary" class="form-control" [(ngModel)]="designation.salary" name="salary" required>
+          <div *ngIf="designationForm.form.controls['salary']?.invalid && designationForm.form.controls['salary']?.touched" class="text-danger">
+            Salary is required
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" id="description" class="form-control" [(ngModel)]="designation.description" name="description" required>
+          <div *ngIf="designationForm.form.controls['description']?.invalid && designationForm.form.controls['description']?.touched" class="text-danger">
+            Description is required
+          </div>
+        </div>
+  
+        <div class="mb-3">
+          <label for="departmentId" class="form-label">Department</label>
+          <select id="departmentId" class="form-control" [(ngModel)]="designation.departmentId" name="departmentId" required>
+            <option *ngFor="let department of departments" [value]="department.departmentId">
+              {{ department.name }}
+            </option>
+          </select>
+          <div *ngIf="designationForm.form.controls['departmentId']?.invalid && designationForm.form.controls['departmentId']?.touched" class="text-danger">
+            Department selection is required
+          </div>
+        </div>
+  
+        <button type="submit" class="btn btn-success" [disabled]="!designationForm.form.valid">
+          {{ isEdit ? 'Edit' : 'Save' }}
+        </button>
+        <button type="button" class="btn btn-secondary" routerLink="/app-admin/designation-list">Cancel</button>
+      </form>
+    </div>
+  </div>

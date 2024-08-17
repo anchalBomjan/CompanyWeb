@@ -25,8 +25,10 @@ namespace WebApp.API.Controllers
         public async Task<IActionResult> GetDesignations()
         {
             var designations = await _designationRepository.GetAllDesignationsAsync();
-            var designationDtos = _mapper.Map<IEnumerable<DesignationDto>>(designations);
-            return Ok(designationDtos);
+            // var designationDtos = _mapper.Map<IEnumerable<DesignationDto>>(designations);
+            //return Ok(designationDtos);
+
+            return Ok(designations);
         }
 
         [HttpGet("{id}")]

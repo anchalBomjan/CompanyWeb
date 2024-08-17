@@ -10,6 +10,8 @@ import { HRComponent } from './hr/hr.component';
 import { UserComponent } from './user/user.component';
 import { DepartmentListComponent } from './admin/department-list/department-list.component';
 import { DepartmentFormComponent } from './admin/department-form/department-form.component';
+import { DesignationListComponent } from './admin/designation-list/designation-list.component';
+import { DesignationFormComponent } from './admin/designation-form/designation-form.component';
 
 
 export const routes: Routes = [
@@ -32,16 +34,18 @@ export const routes: Routes = [
       { path: 'app-department-form', component: DepartmentFormComponent },
       { path: 'users', component: RolesComponent }, // Example child route for Users
       { path: 'settings', component: RolesComponent }, // Example child route for Settings
-      
+      { path: 'app-designation-list', component: DesignationListComponent }, // For listing all designations
+      { path: 'app-designation-form/:id', component: DesignationFormComponent }, // For editing a designation
+      { path: 'app-designation-form', component: DesignationFormComponent }, // For creating a new designation
+     
+
     ]
   },
 {path:'app-hr',component:HRComponent},
 {path:'app-user',component:UserComponent},
 
 
-// { path: 'app-hr', component: HRComponent, canActivate: [authGuard], data: { roles: ['Hr'] } },
-// { path: 'app-admin', component: AdminComponent, canActivate: [authGuard], data: { roles: ['Admin'] } },
-// { path: 'app-user', component: UserComponent, canActivate: [authGuard], data: { roles: ['User'] } },
+
 
 ];
 
