@@ -1,4 +1,6 @@
-﻿namespace WebApp.API.Models
+﻿using System.Text.Json.Serialization;
+
+namespace WebApp.API.Models
 {
     public class Department
     {
@@ -8,6 +10,7 @@
 
 
         public ICollection<Designation> Designations { get; set; }
+      
         public ICollection<EmployeeDetail> EmployeeDetails { get; set; }
        
 

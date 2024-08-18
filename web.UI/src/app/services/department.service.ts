@@ -2,11 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import {  IDepartment } from '../interface/Department';
 import { Observable } from 'rxjs';
+import { IDepartmentWithDesignations } from '../interface/DepartmentWithDesignations';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DepartmentService {
+
+  
   private apiUrl = 'https://localhost:44386/api/Department'; // Your API endpoint
   constructor(private http:HttpClient)
    { 
@@ -30,6 +33,9 @@ export class DepartmentService {
 
   deleteDepartment(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+  getDepartmentsWithDesignations(): Observable<IDepartmentWithDesignations[]> {
+    return this.http.get<IDepartmentWithDesignations[]>(`${this.apiUrl}/GetDepartmentsWithDesignations`);
   }
 
 

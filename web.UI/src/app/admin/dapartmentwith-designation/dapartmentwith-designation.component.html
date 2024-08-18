@@ -1,0 +1,30 @@
+<p class="alert alert-info">Department with Designations works!</p>
+
+<div class="container mt-4">
+  <div *ngFor="let department of departmentsWithDesignations" class="card mb-3 department-card">
+    <div class="card-header department-card-header">
+      <h4 class="card-title">{{ department.name }}</h4>
+      <p class="card-text">{{ department.description }}</p>
+    </div>
+    <div class="card-body">
+      <div *ngIf="department.designations.length > 0; else noDesignations">
+        <ul class="list-group">
+          <li *ngFor="let designation of department.designations" class="list-group-item designation-item">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <strong>{{ designation.title }}</strong><br>
+                <small>{{ designation.description }}</small>
+              </div>
+              <span class="badge bg-primary">
+                {{ designation.salary | currency }}
+              </span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <ng-template #noDesignations>
+        <p>No designations available for this department.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

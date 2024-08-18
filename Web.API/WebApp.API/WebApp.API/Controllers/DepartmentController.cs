@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using WebApp.API.Data;
 using WebApp.API.Models;
 using WebApp.API.Models.DTOs;
 using WebApp.API.Repositories.IRepository;
@@ -18,11 +20,12 @@ namespace WebApp.API.Controllers
 
         private readonly IDepartmentRepository _departmentRepository;
         private readonly IMapper _mapper;
-
-        public DepartmentController(IDepartmentRepository departmentRepository, IMapper mapper)
+        private readonly ApplicationDbContext _context;
+        public DepartmentController(IDepartmentRepository departmentRepository, IMapper mapper,ApplicationDbContext context)
         {
              _departmentRepository = departmentRepository;
             _mapper = mapper;
+            _context = context;
         }
 
         //In here we need All Details with Id  for edit and delete
@@ -44,8 +47,9 @@ namespace WebApp.API.Controllers
             if (department == null)
                 return NotFound();
 
-            var departmentDto = _mapper.Map<DepartmentDto>(department);
-            return Ok(departmentDto);
+            //var departmentDto = _mapper.Map<DepartmentDto>(department);
+            //return Ok(departmentDto);
+            return Ok(department);
         }
         [HttpPost]
         public async Task<IActionResult> CreateDepartment([FromBody] DepartmentDto departmentDto)
@@ -84,5 +88,15 @@ namespace WebApp.API.Controllers
             await _departmentRepository.DeleteDepartmentAsync(id);
             return NoContent();
         }
+
+
+        [HttpGet("GetDepartmentsWithDesignations")]
+        public async Task<IActionResult> GetDepartmentsWithDesignations()
+        {
+            var departments = await _departmentRepository.GetDepartmentsWithDesignationsAsync();
+            var departmentDtos = _mapper.Map<IEnumerable<DepartmentWithDesignationsDto>>(departments);
+            return Ok(departmentDtos);
+        }
+
     }
 }

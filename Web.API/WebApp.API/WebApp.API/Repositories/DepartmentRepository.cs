@@ -46,5 +46,14 @@ namespace WebApp.API.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<IEnumerable<Department>> GetDepartmentsWithDesignationsAsync()
+        {
+            return await _context.Departments
+                                 .Include(d => d.Designations)
+                                 .ToListAsync();
+        }
+
+
     }
 }

@@ -12,6 +12,7 @@ import { DepartmentListComponent } from './admin/department-list/department-list
 import { DepartmentFormComponent } from './admin/department-form/department-form.component';
 import { DesignationListComponent } from './admin/designation-list/designation-list.component';
 import { DesignationFormComponent } from './admin/designation-form/designation-form.component';
+import { DapartmentwithDesignationComponent } from './admin/dapartmentwith-designation/dapartmentwith-designation.component';
 
 
 export const routes: Routes = [
@@ -37,7 +38,7 @@ export const routes: Routes = [
       { path: 'app-designation-list', component: DesignationListComponent }, // For listing all designations
       { path: 'app-designation-form/:id', component: DesignationFormComponent }, // For editing a designation
       { path: 'app-designation-form', component: DesignationFormComponent }, // For creating a new designation
-     
+     {path: 'app-dapartmentwith-designation',component:DapartmentwithDesignationComponent}
 
     ]
   },

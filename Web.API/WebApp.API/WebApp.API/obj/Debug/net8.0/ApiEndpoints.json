@@ -183,6 +183,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "WebApp.API.Controllers.DepartmentController",
+    "Method": "GetDepartmentsWithDesignations",
+    "RelativePath": "api/Department/GetDepartmentsWithDesignations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebApp.API.Controllers.DesignationController",
     "Method": "GetDesignations",
     "RelativePath": "api/Designation",

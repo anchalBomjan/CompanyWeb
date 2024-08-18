@@ -10,6 +10,7 @@ namespace WebApp.API.Repositories.IRepository
         Task<Department>AddDepartmentAsync(Department department);
         Task<Department> UpdateDepartmentAsync(Department department);
         Task DeleteDepartmentAsync(int id);
+        Task<IEnumerable<Department>> GetDepartmentsWithDesignationsAsync();
 
     }
 }
