@@ -13,33 +13,32 @@ import { DepartmentService } from '../../services/department.service';
   styleUrl: './department-list.component.css'
 })
 export class DepartmentListComponent {
-departments:IDepartment[]=[];
+  departments:IDepartment[]=[];
 
-constructor(private departmentservice:DepartmentService,private router:Router)
-{
-  this.loadDepartments();
-}
-loadDepartments(): void {
-  this.departmentservice.getDepartments().subscribe((data: IDepartment[]) => {
-    this.departments = data;
-  });
-}
+ 
 
-edit(id: number): void {
+  constructor(private departmentService: DepartmentService, private router: Router) {
+    this.loadDepartments();
+  }
 
-  
-  this.router.navigate(['/Department/'+id]);
+  loadDepartments(): void {
+    this.departmentService.getDepartments().subscribe((data: IDepartment[]) => {
+      this.departments = data;
+    });
+  }
 
+  edit(id: number): void {
+    this.router.navigate(['/app-admin/Department', id]); // Navigate to edit form
+  }
 
-}
+  delete(id: number): void {
+    this.departmentService.deleteDepartment(id).subscribe(() => {
+      this.departments = this.departments.filter(dep => dep.departmentId !== id);
+    });
+  }
 
-delete(id: number ): void {
-
-  this.departmentservice.deleteDepartment(id).subscribe(() => {
-    this.departments = this.departments.filter(dep => dep.departmentId !== id);
-  });
-
-
-}
+  addDepartment(): void {
+    this.router.navigate(['/app-admin/app-department-form']); // Navigate to add form
+  }
 
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IDepartment } from '../interface/Department';
+import { IDepartmentWithDesignations } from '../interface/DepartmentWithDesignations';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +31,8 @@ private baseUrl ='https://localhost:44386/api/Department';
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
+
+  getDepartmentsWithDesignations(): Observable<IDepartmentWithDesignations[]> {
+    return this.http.get<IDepartmentWithDesignations[]>(`${this.baseUrl}/GetDepartmentsWithDesignations`);
+  }
 }

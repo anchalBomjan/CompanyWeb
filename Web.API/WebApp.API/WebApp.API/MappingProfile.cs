@@ -7,6 +7,9 @@ namespace WebApp.API
     public class MappingProfile:Profile
     {
        public MappingProfile() {
+
+            CreateMap<Department, DepartmentWithDesignationsDto>()
+              .ForMember(dest => dest.Designations, opt => opt.MapFrom(src => src.Designations));
             CreateMap<Department, DepartmentDto>().ReverseMap();
             CreateMap<Designation, DesignationDto>().ReverseMap();
         }

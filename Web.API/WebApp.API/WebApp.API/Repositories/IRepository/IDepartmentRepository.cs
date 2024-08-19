@@ -13,5 +13,7 @@ namespace WebApp.API.Repositories.IRepository
 
         Task DeleteDepartmentAsync(int id);
 
+        Task<IEnumerable<Department>> GetDepartmentsWithDesignationsAsync();
+
     }
 }

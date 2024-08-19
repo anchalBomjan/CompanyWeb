@@ -15,58 +15,42 @@ import { DepartmentService } from '../../services/department.service';
   styleUrl: './department-form.component.css'
 })
 export class DepartmentFormComponent {
-  department: IDepartment;
-  departmentId !:number;
-  isEdit: boolean = false;
-  constructor(private http:HttpClient, private departmentservice:DepartmentService,private router:Router,private route:ActivatedRoute,private toastr:ToastrService)
-  {
-    this.department={
-      name:"",
-      description:""
-    }
-   this.departmentId=this.route.snapshot.params["id"];
-   if (this.departmentId){
-     this.isEdit=true;
-     this.loadDepartment(this.departmentId)
-   }
-   
- 
-   }
 
+  department: IDepartment = { name: "", description: "" };
+  departmentId!: number;
+  isEdit: boolean = false;
+
+  constructor(
+    private departmentService: DepartmentService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private toastr: ToastrService
+  ) {
+    this.departmentId = this.route.snapshot.params["id"];
+    if (this.departmentId) {
+      this.isEdit = true;
+      this.loadDepartment(this.departmentId);
+    }
+  }
 
   loadDepartment(id: number): void {
-    this.departmentservice.getDepartment(id).subscribe(
-      (department: IDepartment) => {
-        this.department = department;
-      }
-    );
+    this.departmentService.getDepartment(id).subscribe((department: IDepartment) => {
+      this.department = department;
+    });
   }
 
   onSubmit(): void {
     if (this.isEdit) {
-      this.departmentservice.updateDepartment(this.departmentId,this.department).subscribe({
-        next:(response)=>{
-          this.toastr.success("Employee Edit successfully");
-          console.log('Employee Edit successfully', response);
-        }
+      this.departmentService.updateDepartment(this.departmentId, this.department).subscribe(() => {
+        this.toastr.success("Department edited successfully");
+        this.router.navigate(['/app-admin/app-department-list']);
+      });
+    } else {
+      this.departmentService.createDepartment(this.department).subscribe(() => {
+        this.toastr.success("Department created successfully");
+        this.router.navigate(['/app-admin/app-department-list']);
       });
     }
-    else{
-        this.departmentservice.createDepartment(this.department).subscribe({
-          next:(response)=>{
-            this.toastr.success("Department is create succesfully");
-
-          },
-          error: (error) => {
-            console.error('Error adding employee', error);
-          }
-
-
-
-        });
-    }
-
   } 
-  
 
 }

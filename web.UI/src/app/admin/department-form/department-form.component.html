@@ -1,30 +1,29 @@
 <div class="container mt-5">
-    <div class="shadow p-4 form-container">
-  
-      <h4>{{ isEdit ? 'Edit Department Details' : 'Create Department Form' }}</h4>
-  
-      <form (ngSubmit)="onSubmit()" #departmentForm="ngForm">
-        <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input type="text" id="name" class="form-control" [(ngModel)]="department.name" name="name" required>
-          <div *ngIf="departmentForm.form.controls['name']?.invalid && departmentForm.form.controls['name']?.touched" class="text-danger">
-            Name is required
-          </div>
+  <div class="shadow p-4 form-container">
+
+    <h4>{{ isEdit ? 'Edit Department Details' : 'Create Department Form' }}</h4>
+
+    <form (ngSubmit)="onSubmit()" #departmentForm="ngForm">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" id="name" class="form-control" [(ngModel)]="department.name" name="name" required>
+        <div *ngIf="departmentForm.form.controls['name']?.invalid && departmentForm.form.controls['name']?.touched" class="text-danger">
+          Name is required
         </div>
-  
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <input type="text" id="description" class="form-control" [(ngModel)]="department.description" name="description" required>
-          <div *ngIf="departmentForm.form.controls['description']?.invalid && departmentForm.form.controls['description']?.touched" class="text-danger">
-            Description is required
-          </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <input type="text" id="description" class="form-control" [(ngModel)]="department.description" name="description" required>
+        <div *ngIf="departmentForm.form.controls['description']?.invalid && departmentForm.form.controls['description']?.touched" class="text-danger">
+          Description is required
         </div>
-  
-        <button type="submit" class="btn btn-success" [disabled]="!departmentForm.form.valid">
-          {{ isEdit ? 'Edit' : 'Save' }}
-        </button>
-        <button type="button" class="btn btn-secondary" routerLink="/department-list">Cancel</button>
-      </form>
-    </div>
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!departmentForm.form.valid">
+        {{ isEdit ? 'Edit' : 'Save' }}
+      </button>
+      <button type="button" class="btn btn-secondary" routerLink="/department-list">Cancel</button>
+    </form>
   </div>
-  
+</div>

@@ -5,13 +5,13 @@ using WebApp.API.Repositories.IRepository;
 
 namespace WebApp.API.Repositories
 {
-    public class DepartmentRepository :IDepartmentRepository
+    public class DepartmentRepository : IDepartmentRepository
     {
 
         private readonly ApplicationDbContext _context;
         public DepartmentRepository(ApplicationDbContext context)
         {
-             _context= context;
+            _context = context;
         }
         public async Task<IEnumerable<Department>> GetAllDepartmentsAsync()
         {
@@ -46,6 +46,15 @@ namespace WebApp.API.Repositories
                 _context.Departments.Remove(department);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public async Task<IEnumerable<Department>> GetDepartmentsWithDesignationsAsync()
+        {
+            return await _context.Departments
+                                 .Include(d => d.Designations)
+                                  .ToListAsync();
+
+
         }
     }
 }

@@ -40,8 +40,11 @@ namespace WebApp.API.Controllers
             if (department == null)
                 return NotFound();
 
-            var departmentDto = _mapper.Map<DepartmentDto>(department);
-            return Ok(departmentDto);
+            //var departmentDto = _mapper.Map<DepartmentDto>(department);
+            //return Ok(departmentDto);
+
+
+            return Ok(department);
 
            
         }
@@ -81,6 +84,15 @@ namespace WebApp.API.Controllers
 
             await _departmentRepository.DeleteDepartmentAsync(id);
             return NoContent();
+        }
+
+
+        [HttpGet("GetDepartmentsWithDesignations")]
+        public async Task<IActionResult> GetDepartmentsWithDesignations()
+        {
+            var departments = await _departmentRepository.GetDepartmentsWithDesignationsAsync();
+            var departmentDtos = _mapper.Map<IEnumerable<DepartmentWithDesignationsDto>>(departments);
+            return Ok(departmentDtos);
         }
     }
 }

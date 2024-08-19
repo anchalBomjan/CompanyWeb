@@ -46,7 +46,7 @@ onSubmit() {
 
         if (userRole === 'Admin') {
           this.router.navigate(['/app-admin']);
-        } else if (userRole === 'HR') {
+        } else if (userRole === 'Hr') {
           this.router.navigate(['/app-hr']);
         } else if (userRole === 'User') {
           this.router.navigate(['/app-user']);
