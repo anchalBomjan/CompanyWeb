@@ -1,1 +1,38 @@
-<p>hr works!</p>
+<div class="hr-dashboard">
+    <div class="dashboard-sidebar">
+      <h6>HR-Dashboard</h6>
+      
+      <!-- Add Section -->
+      <div class="dropdown" bsDropdown>
+        <button type="button" class="btn btn-primary dropdown-toggle" bsDropdownToggle>
+          Add
+        </button>
+        <ul *bsDropdownMenu class="dropdown-menu">
+          <li><a class="dropdown-item" [routerLink]="['/app-hr/app-employee']">Employee</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/app-hr/app-assign-employee']">AssignEmployee</a></li>
+         
+       
+        </ul>
+      </div>
+      
+      <!-- Views Section -->
+      <div class="dropdown" bsDropdown>
+        <button type="button" class="btn btn-primary dropdown-toggle" bsDropdownToggle>
+          Views
+        </button>
+        <ul *bsDropdownMenu class="dropdown-menu">
+          <li><a class="dropdown-item" [routerLink]="['/app-hr/']">EmployeeList</a></li>
+          <li><a class="dropdown-item" [routerLink]="['/app-hr/']">DepartmentWithDesignation</a></li>
+         
+        </ul>
+      </div>
+  
+    </div>
+  
+    <div class="dashboard-content">
+      <router-outlet></router-outlet> <!-- Correct syntax for child route rendering -->
+    </div>
+  
+  
+  
+  </div>

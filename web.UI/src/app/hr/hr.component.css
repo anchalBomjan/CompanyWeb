@@ -1,0 +1,118 @@
+/* Basic Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light background color for the page */
+  }
+  
+  
+  .hr-dashboard {
+    display: flex;
+    height: calc(100vh - 60px); /* Full viewport height minus navbar */
+    margin-top: 60px; /* Ensure content starts below the fixed navbar */
+  }
+  
+  /* Sidebar Styles */
+  .dashboard-sidebar {
+    width: 260px; /* Width of the sidebar */
+    background-color: #ffffff; /* White background for the sidebar */
+    padding: 18px;
+    border-right: 1px solid #dee2e6;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 60px); /* Full height minus navbar height */
+    position: fixed; /* Fix to the left side */
+    top: 60px; /* Start just below the navbar */
+    left: 0;
+    overflow-y: auto; /* Enable vertical scrolling within the sidebar */
+    z-index: 100; /* Ensure it stays above other elements */
+    box-shadow: 2px 0 4px rgba(0,0,0,0.1); /* Subtle shadow for the sidebar */
+  }
+  
+  /* Sidebar Header */
+  .dashboard-sidebar h6 {
+    font-size: 1.25rem; /* Slightly larger font size for header */
+    margin-bottom: 20px; /* Space below the header */
+  }
+  
+  /* Dropdown Button Styles */
+  .dropdown button {
+    width: 100%;
+    text-align: left;
+    border: none;
+    background-color: #007bff; /* Blue background for the button */
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-bottom: 15px; /* Space below the dropdown button */
+  }
+  
+  .dropdown button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Dropdown Menu Styles */
+  .dropdown-menu {
+    width: 100%;
+  }
+  
+  .dropdown-menu .dropdown-item {
+    padding: 10px;
+    color: #007bff; /* Blue text color */
+  }
+  
+  .dropdown-menu .dropdown-item:hover {
+    background-color: #f1f1f1; /* Light background on hover */
+    color: #0056b3; /* Darker blue on hover */
+  }
+  
+  /* Links Styles */
+  .dashboard-links {
+    margin-top: 20px; /* Add some space above the links */
+  }
+  
+  .dashboard-links a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #007bff; /* Blue text color */
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
+  .dashboard-links a:hover {
+    background-color: #e9ecef; /* Light grey background on hover */
+  }
+  
+  /* Content Styles */
+  .dashboard-content {
+    margin-left: 260px; /* Space for the sidebar */
+    padding: 20px;
+    width: calc(100% - 260px); /* Full width minus sidebar */
+    background-color: #ffffff; /* White background for content area */
+    overflow-y: auto; /* Enable vertical scrolling for content */
+    height: calc(100vh - 60px); /* Full height minus navbar height */
+  }
+  
+  /* Card Styles */
+  .dashboard-cards {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    padding: 20px;
+    flex: 1;
+    min-width: 250px; /* Ensure cards have a minimum width */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }

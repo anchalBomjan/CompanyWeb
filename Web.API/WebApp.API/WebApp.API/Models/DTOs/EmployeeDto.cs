@@ -1,8 +1,7 @@
-﻿namespace WebApp.API.Models
+﻿namespace WebApp.API.Models.DTOs
 {
-    public class Employee
+    public class EmployeeDto
     {
-
         public int EmployeeId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
@@ -11,7 +10,5 @@
         public DateTime DateOfBirth { get; set; }
         public string Address { get; set; }
         public DateTime HireDate { get; set; }
-
-        public ICollection<EmployeeDetail> EmployeeDetails { get; set; }
     }
 }

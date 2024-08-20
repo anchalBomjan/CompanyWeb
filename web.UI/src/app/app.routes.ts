@@ -13,6 +13,7 @@ import { DepartmentFormComponent } from './admin/department-form/department-form
 import { DesignationListComponent } from './admin/designation-list/designation-list.component';
 import { DesignationFormComponent } from './admin/designation-form/designation-form.component';
 import { DapartmentwithDesignationComponent } from './admin/dapartmentwith-designation/dapartmentwith-designation.component';
+import { EmployeeComponent } from './hr/employee/employee.component';
 
 
 export const routes: Routes = [
@@ -42,7 +43,14 @@ export const routes: Routes = [
 
     ]
   },
-{path:'app-hr',component:HRComponent},
+{ 
+    path:'app-hr',
+    component:HRComponent,
+    children: [
+       {path:'app-employee', component:EmployeeComponent},
+      ]   
+    },
+ 
 {path:'app-user',component:UserComponent},
 
 

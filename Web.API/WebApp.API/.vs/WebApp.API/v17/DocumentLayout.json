@@ -1,44 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|c:\\users\\anchal\\desktop\\percoid2\\companyweb\\web.api\\webapp.api\\webapp.api\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|solutionrelative:webapp.api\\controllers\\departmentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|c:\\users\\anchal\\desktop\\percoid2\\companyweb\\web.api\\webapp.api\\webapp.api\\models\\dtos\\departmentwithdesignationsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|solutionrelative:webapp.api\\models\\dtos\\departmentwithdesignationsdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|c:\\users\\anchal\\desktop\\percoid2\\companyweb\\web.api\\webapp.api\\webapp.api\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|solutionrelative:webapp.api\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|c:\\users\\anchal\\desktop\\percoid2\\companyweb\\web.api\\webapp.api\\webapp.api\\models\\designation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|solutionrelative:webapp.api\\models\\designation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|c:\\users\\anchal\\desktop\\percoid2\\companyweb\\web.api\\webapp.api\\webapp.api\\models\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|solutionrelative:webapp.api\\models\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|c:\\users\\anchal\\desktop\\percoid2\\companyweb\\web.api\\webapp.api\\webapp.api\\models\\dtos\\designationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|solutionrelative:webapp.api\\models\\dtos\\designationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|c:\\users\\anchal\\desktop\\percoid2\\companyweb\\web.api\\webapp.api\\webapp.api\\models\\dtos\\departmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|solutionrelative:webapp.api\\models\\dtos\\departmentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|c:\\users\\anchal\\desktop\\percoid2\\companyweb\\web.api\\webapp.api\\webapp.api\\repositories\\departmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|solutionrelative:webapp.api\\repositories\\departmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|c:\\users\\anchal\\desktop\\percoid2\\companyweb\\web.api\\webapp.api\\webapp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C0F01531-F456-4E01-9DFD-57865336848A}|WebApp.API\\WebApp.API.csproj|solutionrelative:webapp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -46,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -55,123 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "DepartmentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Repositories\\DepartmentRepository.cs",
-              "RelativeDocumentMoniker": "WebApp.API\\Repositories\\DepartmentRepository.cs",
-              "ToolTip": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Repositories\\DepartmentRepository.cs",
-              "RelativeToolTip": "WebApp.API\\Repositories\\DepartmentRepository.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAYwDAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T14:35:22.655Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DepartmentDto.cs",
-              "DocumentMoniker": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Models\\DTOs\\DepartmentDto.cs",
-              "RelativeDocumentMoniker": "WebApp.API\\Models\\DTOs\\DepartmentDto.cs",
-              "ToolTip": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Models\\DTOs\\DepartmentDto.cs",
-              "RelativeToolTip": "WebApp.API\\Models\\DTOs\\DepartmentDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T14:26:37.815Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Program.cs",
-              "RelativeDocumentMoniker": "WebApp.API\\Program.cs",
-              "ToolTip": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Program.cs",
-              "RelativeToolTip": "WebApp.API\\Program.cs",
-              "ViewState": "AQIAAGQAAAAAAAAAAAAuwHMAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T14:18:30.757Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DepartmentController.cs",
-              "DocumentMoniker": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Controllers\\DepartmentController.cs",
-              "RelativeDocumentMoniker": "WebApp.API\\Controllers\\DepartmentController.cs",
-              "ToolTip": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Controllers\\DepartmentController.cs",
-              "RelativeToolTip": "WebApp.API\\Controllers\\DepartmentController.cs",
-              "ViewState": "AQIAAE4AAAAAAAAAAAAcwGMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T11:00:42.513Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DepartmentWithDesignationsDto.cs",
-              "DocumentMoniker": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Models\\DTOs\\DepartmentWithDesignationsDto.cs",
-              "RelativeDocumentMoniker": "WebApp.API\\Models\\DTOs\\DepartmentWithDesignationsDto.cs",
-              "ToolTip": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Models\\DTOs\\DepartmentWithDesignationsDto.cs",
-              "RelativeToolTip": "WebApp.API\\Models\\DTOs\\DepartmentWithDesignationsDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T14:41:58.442Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "WebApp.API\\MappingProfile.cs",
-              "ToolTip": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\MappingProfile.cs",
-              "RelativeToolTip": "WebApp.API\\MappingProfile.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T14:40:16.59Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DesignationDto.cs",
-              "DocumentMoniker": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Models\\DTOs\\DesignationDto.cs",
-              "RelativeDocumentMoniker": "WebApp.API\\Models\\DTOs\\DesignationDto.cs",
-              "ToolTip": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Models\\DTOs\\DesignationDto.cs",
-              "RelativeToolTip": "WebApp.API\\Models\\DTOs\\DesignationDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T10:57:09.493Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Department.cs",
-              "DocumentMoniker": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Models\\Department.cs",
-              "RelativeDocumentMoniker": "WebApp.API\\Models\\Department.cs",
-              "ToolTip": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Models\\Department.cs",
-              "RelativeToolTip": "WebApp.API\\Models\\Department.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T09:18:31.01Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Designation.cs",
-              "DocumentMoniker": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Models\\Designation.cs",
-              "RelativeDocumentMoniker": "WebApp.API\\Models\\Designation.cs",
-              "ToolTip": "C:\\Users\\Anchal\\Desktop\\Percoid2\\CompanyWeb\\Web.API\\WebApp.API\\WebApp.API\\Models\\Designation.cs",
-              "RelativeToolTip": "WebApp.API\\Models\\Designation.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-18T09:18:21.716Z",
-              "EditorCaption": ""
             }
           ]
         }

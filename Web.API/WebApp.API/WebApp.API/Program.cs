@@ -12,6 +12,8 @@ using System.Text;
 using Microsoft.Data.SqlClient;
 using System.Data;
 using WebApp.API;
+using WebApp.API.Helper;
+using WebApp.API.Services.IServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +33,12 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IDesignationRepository, DesignationRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
+// Register the EmployeeRepository with the DI container
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
+// Register the PhotoService
+builder.Services.AddScoped<IPhotoService, PhotoService>();
 
 // Register AuthenticationService as scoped
 builder.Services.AddScoped<AuthenticationService>();

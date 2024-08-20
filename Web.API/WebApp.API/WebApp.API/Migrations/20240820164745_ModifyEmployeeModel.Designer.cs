@@ -12,8 +12,8 @@ using WebApp.API.Data;
 namespace WebApp.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240801111956_first")]
-    partial class first
+    [Migration("20240820164745_ModifyEmployeeModel")]
+    partial class ModifyEmployeeModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -98,9 +98,9 @@ namespace WebApp.API.Migrations
                     b.Property<DateTime>("HireDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<byte[]>("ImageData")
+                    b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasColumnType("varbinary(max)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()

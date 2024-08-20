@@ -18,8 +18,7 @@ namespace WebApp.API.Data
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            // Department - Designation relationship
+        {// Department - Designation relationship
             modelBuilder.Entity<Designation>()
                 .HasOne(d => d.Department)
                 .WithMany(dept => dept.Designations)
@@ -47,6 +46,8 @@ namespace WebApp.API.Data
                 .HasOne(ed => ed.Designation)
                 .WithMany(d => d.EmployeeDetails)
                 .HasForeignKey(ed => ed.DesignationId);
+
+        
 
             base.OnModelCreating(modelBuilder);
         }

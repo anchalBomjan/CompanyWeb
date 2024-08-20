@@ -425,3 +425,5 @@ C:\Users\Anchal\Desktop\Percoid2\CompanyWeb\Web.API\WebApp.API\WebApp.API\obj\De
 C:\Users\Anchal\Desktop\Percoid2\CompanyWeb\Web.API\WebApp.API\WebApp.API\obj\Debug\net8.0\WebApp.API.pdb
 C:\Users\Anchal\Desktop\Percoid2\CompanyWeb\Web.API\WebApp.API\WebApp.API\obj\Debug\net8.0\WebApp.API.genruntimeconfig.cache
 C:\Users\Anchal\Desktop\Percoid2\CompanyWeb\Web.API\WebApp.API\WebApp.API\obj\Debug\net8.0\ref\WebApp.API.dll
+C:\Users\Anchal\Desktop\Percoid2\CompanyWeb\Web.API\WebApp.API\WebApp.API\bin\Debug\net8.0\CloudinaryDotNet.dll
+C:\Users\Anchal\Desktop\Percoid2\CompanyWeb\Web.API\WebApp.API\WebApp.API\bin\Debug\net8.0\Newtonsoft.Json.dll
