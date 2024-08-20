@@ -11,7 +11,7 @@ body {
 }
 
 
-.admin-dashboard {
+.hr-dashboard {
   display: flex;
   height: calc(100vh - 60px); /* Full viewport height minus navbar */
   margin-top: 60px; /* Ensure content starts below the fixed navbar */

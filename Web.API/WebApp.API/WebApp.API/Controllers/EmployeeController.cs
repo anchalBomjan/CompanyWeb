@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using WebApp.API.Models.DTOs;
 using WebApp.API.Models;
 using WebApp.API.Repositories.IRepository;
+ 
 
 namespace WebApp.API.Controllers
 {
@@ -62,7 +63,7 @@ namespace WebApp.API.Controllers
             return Ok(employee);
         }
 
-        // UPDATE
+        /*// UPDATE
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployee(int id, [FromForm] EmployeeDto employeeDto)
         {
@@ -89,7 +90,40 @@ namespace WebApp.API.Controllers
             var updatedEmployee = await _employeeRepository.UpdateEmployeeAsync(existingEmployee);
 
             return Ok(updatedEmployee);
+        }*/
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateEmployee(int id, [FromForm] EmployeeDto employeeDto)
+        {
+            if (id != employeeDto.EmployeeId)
+            {
+                return BadRequest("ID mismatch");
+            }
+
+            var existingEmployee = await _employeeRepository.GetEmployeeByIdAsync(id);
+            if (existingEmployee == null)
+            {
+                return NotFound();
+            }
+
+            existingEmployee.Name = employeeDto.Name;
+            existingEmployee.Email = employeeDto.Email;
+            existingEmployee.Phone = employeeDto.Phone;
+            existingEmployee.DateOfBirth = employeeDto.DateOfBirth;
+            existingEmployee.Address = employeeDto.Address;
+            existingEmployee.HireDate = employeeDto.HireDate;
+
+            if (employeeDto.Image != null)
+            {
+                using var ms = new MemoryStream();
+                await employeeDto.Image.CopyToAsync(ms);
+                existingEmployee.ImageData = ms.ToArray();
+            }
+
+            var updatedEmployee = await _employeeRepository.UpdateEmployeeAsync(existingEmployee);
+
+            return Ok(updatedEmployee);
         }
+
 
         // DELETE
         [HttpDelete("{id}")]
@@ -106,3 +140,7 @@ namespace WebApp.API.Controllers
         }
     }
 }
+
+  
+
+  

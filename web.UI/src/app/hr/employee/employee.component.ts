@@ -15,6 +15,7 @@ import { EmployeeService } from '../../services/employee.service';
 export class EmployeeComponent {
   employees: IEmployee[] = [];
   selectedEmployee: IEmployee = {
+    employeeId:0,
     name: '',
     email: '',
     phone: '',
@@ -87,18 +88,24 @@ export class EmployeeComponent {
       }
     });
   }
-  getAllEmployees() {
-    this.employeeService.getAllEmployees().subscribe({
-      next: (response) => {
-        this.employees = response;
-      },
-      error: (error) => {
-        console.error('Error fetching employees:', error);
-      }
-    });
-  }
- // Handle file selection
+
+ getAllEmployees() {
+  this.employeeService.getAllEmployees().subscribe({
+    next: (response) => {
+      this.employees = response;
+      console.log(response);
+    },
+    error: (error) => {
+      console.error('Error fetching employees:', error);
+    }
+  });
+}
  onFileSelected(event: any) {
   this.selectedFile = event.target.files[0];
 }
+  // Edit Employee
+  editEmployee(employee: IEmployee) {
+    this.selectedEmployee = { ...employee }; // Clone the employee object for editing
+  }
+
 }
