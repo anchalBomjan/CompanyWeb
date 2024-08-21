@@ -11,6 +11,8 @@ namespace WebApp.API.Repositories.IRepository
         Task UpdateEmployeeAsync(Employee employee);
         Task DeleteEmployeeAsync(int id);
 
+     
+
 
     }
 }

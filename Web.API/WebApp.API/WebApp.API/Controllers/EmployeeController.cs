@@ -1,13 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using WebApp.API.Models.DTOs;
 using WebApp.API.Models;
 using WebApp.API.Repositories.IRepository;
 using WebApp.API.Services.IServices;
-using WebApp.API.Services;
-using Microsoft.EntityFrameworkCore;
-using CloudinaryDotNet.Actions;
-using WebApp.API.Helper;
+
 
 
 namespace WebApp.API.Controllers
@@ -23,6 +20,15 @@ namespace WebApp.API.Controllers
         {
              _employeeRepository = employeeRepository;
             _photoServices = photoServices;
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAllEmployees()
+        {
+            var employees = await _employeeRepository.GetAllEmployeesAsync();
+            if (employees == null || !employees.Any())
+                return NotFound("No employees found");
+
+            return Ok(employees);
         }
 
         [HttpPost]

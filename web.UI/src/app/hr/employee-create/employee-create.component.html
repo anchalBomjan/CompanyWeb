@@ -1,0 +1,29 @@
+<p>employee-create works!</p>
+<div>
+    <h2>Create Employee</h2>
+    <form (ngSubmit)="onSubmit()">
+      <label>Name:
+        <input [(ngModel)]="employee.name" name="name" required>
+      </label>
+      <label>Email:
+        <input [(ngModel)]="employee.email" name="email" required>
+      </label>
+      <label>Phone:
+        <input [(ngModel)]="employee.phone" name="phone" required>
+      </label>
+      <label>Date of Birth:
+        <input [(ngModel)]="employee.dateOfBirth" name="dateOfBirth" type="date" required>
+      </label>
+      <label>Address:
+        <input [(ngModel)]="employee.address" name="address" required>
+      </label>
+      <label>Hire Date:
+        <input [(ngModel)]="employee.hireDate" name="hireDate" type="date" required>
+      </label>
+      <label>Image:
+        <input type="file" (change)="onFileChange($event)">
+      </label>
+      <button type="submit">Create</button>
+    </form>
+  </div>
+  

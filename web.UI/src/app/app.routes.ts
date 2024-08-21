@@ -12,7 +12,9 @@ import { DesignationListComponent } from './admin/designation-list/designation-l
 import { RolesComponent } from './admin/roles/roles.component';
 
 import { authGuard } from './guards/auth.guard';
-import { EmployeeComponent } from './hr/employee/employee.component';
+import { EmployeeCreateComponent } from './hr/employee-create/employee-create.component';
+import { EmployeeListComponent } from './hr/employee-list/employee-list.component';
+
 import { HRComponent } from './hr/hr.component';
 import { UserComponent } from './user/user.component';
 
@@ -50,16 +52,14 @@ export const routes: Routes = [
    path:'app-hr',
    component:HRComponent,
    children: [
-      {path:'app-employee', component:EmployeeComponent}
+      {path:'app-employee-create', component:EmployeeCreateComponent},
+      {path:'app-employee-list',component:EmployeeListComponent}
      ]   
    },
    
 {path:'app-user',component:UserComponent},
 
 
-// { path: 'app-hr', component: HRComponent, canActivate: [authGuard], data: { roles: ['Hr'] } },
-// { path: 'app-admin', component: AdminComponent, canActivate: [authGuard], data: { roles: ['Admin'] } },
-// { path: 'app-user', component: UserComponent, canActivate: [authGuard], data: { roles: ['User'] } },
 
 ];
 

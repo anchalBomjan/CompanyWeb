@@ -10,21 +10,20 @@ export class EmployeeService {
 private baseUrl='https://localhost:44386/api/Employee';
   constructor(private http:HttpClient) { }
 
-  
-  // Create Employee
-  createEmployee(employee: IEmployee, image?: File): Observable<IEmployee> {
+   // Create Employee
+   createEmployee(employee: IEmployee, image?: File): Observable<IEmployee> {
     const formData: FormData = new FormData();
     formData.append('Name', employee.name);
     formData.append('Email', employee.email);
     formData.append('Phone', employee.phone);
-    formData.append('DateOfBirth', employee.dateOfBirth);
+    formData.append('DateOfBirth', employee.dateOfBirth.toString());
     formData.append('Address', employee.address);
-    formData.append('HireDate', employee.hireDate);
-    
+    formData.append('HireDate', employee.hireDate.toString());
+
     if (image) {
       formData.append('Image', image);
     }
-    
+
     return this.http.post<IEmployee>(this.baseUrl, formData);
   }
 
@@ -36,14 +35,13 @@ private baseUrl='https://localhost:44386/api/Employee';
   // Update Employee
   updateEmployee(id: number, employee: IEmployee, image?: File): Observable<IEmployee> {
     const formData: FormData = new FormData();
-    formData.append('EmployeeId ',employee.employeeId?.toString());
     formData.append('Name', employee.name);
     formData.append('Email', employee.email);
     formData.append('Phone', employee.phone);
-    formData.append('DateOfBirth', employee.dateOfBirth);
+    formData.append('DateOfBirth', employee.dateOfBirth.toString());
     formData.append('Address', employee.address);
-    formData.append('HireDate', employee.hireDate);
-    
+    formData.append('HireDate', employee.hireDate.toString());
+
     if (image) {
       formData.append('Image', image);
     }
@@ -56,8 +54,9 @@ private baseUrl='https://localhost:44386/api/Employee';
     return this.http.delete<void>(`${this.baseUrl}/${id}`);
   }
 
-
+  // Get All Employees
   getAllEmployees(): Observable<IEmployee[]> {
     return this.http.get<IEmployee[]>(this.baseUrl);
   }
+
 }
