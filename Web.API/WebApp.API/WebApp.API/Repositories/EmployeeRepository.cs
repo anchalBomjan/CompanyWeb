@@ -1,60 +1,52 @@
-﻿using Microsoft.EntityFrameworkCore;
-using WebApp.API.Data;
-using WebApp.API.Models;
+﻿using WebApp.API.Data;
 using WebApp.API.Models.DTOs;
+using WebApp.API.Models;
 using WebApp.API.Repositories.IRepository;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.API.Repositories
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class EmployeeRepository:IEmployeeRepository
     {
-        private readonly ApplicationDbContext _context;
 
+        private readonly ApplicationDbContext _context;
         public EmployeeRepository(ApplicationDbContext context)
         {
-            _context = context;
-        }
-
-        public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
-        {
-            return await _context.Employees.Include(e => e.EmployeeDetails).ToListAsync();
+            _context=context;
+             
         }
 
         public async Task<Employee> GetEmployeeByIdAsync(int id)
         {
-            return await _context.Employees.Include(e => e.EmployeeDetails)
-                                           .FirstOrDefaultAsync(e => e.EmployeeId == id);
+            return await _context.Employees.FindAsync(id);
         }
 
-        public async Task<Employee> AddEmployeeAsync(Employee employee)
+        public async Task<IEnumerable<Employee>> GetAllEmployeesAsync()
         {
-            _context.Employees.Add(employee);
-            await _context.SaveChangesAsync();
-            return employee;
+            return await _context.Employees.ToListAsync();
         }
 
-        public async Task<Employee> UpdateEmployeeAsync(Employee employee)
+        public async Task AddEmployeeAsync(Employee employee)
+        {
+            await _context.Employees.AddAsync(employee);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateEmployeeAsync(Employee employee)
         {
             _context.Employees.Update(employee);
             await _context.SaveChangesAsync();
-            return employee;
         }
 
-        public async Task<bool> DeleteEmployeeAsync(int id)
+        public async Task DeleteEmployeeAsync(int id)
         {
-            var employee = await _context.Employees.FindAsync(id);
-            if (employee == null)
+            var employee = await GetEmployeeByIdAsync(id);
+            if (employee != null)
             {
-                return false;
+                _context.Employees.Remove(employee);
+                await _context.SaveChangesAsync();
             }
-
-            _context.Employees.Remove(employee);
-            await _context.SaveChangesAsync();
-            return true;
         }
-
 
     }
-
-
 }

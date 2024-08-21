@@ -48,6 +48,8 @@ namespace WebApp.API.Data
                 .WithMany(d => d.EmployeeDetails)
                 .HasForeignKey(ed => ed.DesignationId);
 
+
+
             base.OnModelCreating(modelBuilder);
         }
 

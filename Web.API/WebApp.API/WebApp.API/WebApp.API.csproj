@@ -8,16 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Helper\**" />
-    <Content Remove="Helper\**" />
-    <EmbeddedResource Remove="Helper\**" />
-    <None Remove="Helper\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
+    <PackageReference Include="CloudinaryDotNet" Version="1.26.2" />
     <PackageReference Include="Dapper" Version="2.1.35" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.7" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
