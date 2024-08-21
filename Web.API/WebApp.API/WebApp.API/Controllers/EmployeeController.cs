@@ -24,6 +24,7 @@ namespace WebApp.API.Controllers
              _employeeRepository = employeeRepository;
             _photoServices = photoServices;
         }
+
         [HttpPost]
         public async Task<IActionResult> CreateEmployee([FromForm] EmployeeDto employeeDto)
         {
@@ -41,6 +42,7 @@ namespace WebApp.API.Controllers
                 Email = employeeDto.Email,
                 Phone = employeeDto.Phone,
                 ImageUrl = uploadResult.SecureUrl.AbsoluteUri,
+                PublicId = uploadResult.PublicId, // Save the public ID
                 DateOfBirth = employeeDto.DateOfBirth,
                 Address = employeeDto.Address,
                 HireDate = employeeDto.HireDate
@@ -50,6 +52,8 @@ namespace WebApp.API.Controllers
 
             return Ok(employee);
         }
+
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployee(int id, [FromForm] EmployeeDto employeeDto)
         {
@@ -60,27 +64,23 @@ namespace WebApp.API.Controllers
 
             if (employeeDto.Image != null && employeeDto.Image.Length > 0)
             {
-                // Upload new photo and handle result
                 var uploadResult = await _photoServices.AddPhotoAsync(employeeDto.Image);
 
                 if (uploadResult.Error != null)
                     return BadRequest(uploadResult.Error.Message);
 
-                // Optionally delete the old image if it exists
-                if (!string.IsNullOrEmpty(employee.ImageUrl))
+                if (!string.IsNullOrEmpty(employee.PublicId))
                 {
-                    var publicId = CloudinaryHelper.ExtractPublicId(employee.ImageUrl);
-                    var deletionResult = await _photoServices.DeletePhotoAsync(publicId);
+                    var deletionResult = await _photoServices.DeletePhotoAsync(employee.PublicId);
 
                     if (deletionResult.Error != null)
                         return BadRequest(deletionResult.Error.Message);
                 }
 
-                // Set the new image URL
                 employee.ImageUrl = uploadResult.SecureUrl.AbsoluteUri;
+                employee.PublicId = uploadResult.PublicId; // Update the public ID
             }
 
-            // Update other employee properties
             employee.Name = employeeDto.Name;
             employee.Email = employeeDto.Email;
             employee.Phone = employeeDto.Phone;
@@ -88,11 +88,14 @@ namespace WebApp.API.Controllers
             employee.DateOfBirth = employeeDto.DateOfBirth;
             employee.HireDate = employeeDto.HireDate;
 
-            // Save updated employee to the repository
             await _employeeRepository.UpdateEmployeeAsync(employee);
 
             return Ok(employee);
         }
+
+
+
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEmployee(int id)
@@ -102,24 +105,17 @@ namespace WebApp.API.Controllers
             if (employee == null)
                 return NotFound();
 
-            if (!string.IsNullOrEmpty(employee.ImageUrl))
+            if (!string.IsNullOrEmpty(employee.PublicId))
             {
-                // Extract public ID from the image URL
-                var publicId = CloudinaryHelper.ExtractPublicId(employee.ImageUrl);
+                var deletionResult = await _photoServices.DeletePhotoAsync(employee.PublicId);
 
-                // Attempt to delete the photo from Cloudinary
-                var deletionResult = await _photoServices.DeletePhotoAsync(publicId);
-
-                // Check if there was an error in the deletion result
                 if (deletionResult.Error != null)
                     return BadRequest(deletionResult.Error.Message);
 
-                // Alternatively, you might want to check if the result indicates a failure
                 if (deletionResult.Result == "not found")
                     return BadRequest("Photo not found.");
             }
 
-            // Delete the employee record from the database
             await _employeeRepository.DeleteEmployeeAsync(id);
 
             return Ok();
