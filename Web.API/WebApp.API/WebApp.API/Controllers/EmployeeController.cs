@@ -75,6 +75,50 @@ namespace WebApp.API.Controllers
         }
 
 
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> UpdateEmployee(int id, [FromForm] EmployeeDto employeeDto)
+        //{
+        //    var employee = await _employeeRepository.GetEmployeeByIdAsync(id);
+
+        //    if (employee == null)
+        //        return NotFound();
+
+        //    // Update employee properties
+        //    employee.Name = employeeDto.Name;
+        //    employee.Email = employeeDto.Email;
+        //    employee.Phone = employeeDto.Phone;
+        //    employee.DateOfBirth = employeeDto.DateOfBirth;
+        //    employee.Address = employeeDto.Address;
+        //    employee.HireDate = employeeDto.HireDate;
+
+        //    // Handle image if present
+        //    if (employeeDto.Image != null && employeeDto.Image.Length > 0)
+        //    {
+        //        var uploadResult = await _photoServices.AddPhotoAsync(employeeDto.Image);
+
+        //        if (uploadResult.Error != null)
+        //            return BadRequest(uploadResult.Error.Message);
+
+        //        if (!string.IsNullOrEmpty(employee.PublicId))
+        //        {
+        //            var deletionResult = await _photoServices.DeletePhotoAsync(employee.PublicId);
+
+        //            if (deletionResult.Error != null)
+        //                return BadRequest(deletionResult.Error.Message);
+        //        }
+
+        //        employee.ImageUrl = uploadResult.SecureUrl.AbsoluteUri;
+        //        employee.PublicId = uploadResult.PublicId; // Update the public ID
+        //    }
+
+        //    await _employeeRepository.UpdateEmployeeAsync(employee);
+
+        //    return Ok(employee);
+        //}
+
+
+
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateEmployee(int id, [FromForm] EmployeeDto employeeDto)
         {
@@ -91,7 +135,8 @@ namespace WebApp.API.Controllers
             employee.Address = employeeDto.Address;
             employee.HireDate = employeeDto.HireDate;
 
-            // Handle image if present
+            // **Handle image if present**
+            // **This block will only execute if a new image is selected**
             if (employeeDto.Image != null && employeeDto.Image.Length > 0)
             {
                 var uploadResult = await _photoServices.AddPhotoAsync(employeeDto.Image);
@@ -99,6 +144,7 @@ namespace WebApp.API.Controllers
                 if (uploadResult.Error != null)
                     return BadRequest(uploadResult.Error.Message);
 
+                // **Delete the old image if it exists**
                 if (!string.IsNullOrEmpty(employee.PublicId))
                 {
                     var deletionResult = await _photoServices.DeletePhotoAsync(employee.PublicId);
@@ -107,14 +153,22 @@ namespace WebApp.API.Controllers
                         return BadRequest(deletionResult.Error.Message);
                 }
 
+                // **Update to new image**
                 employee.ImageUrl = uploadResult.SecureUrl.AbsoluteUri;
                 employee.PublicId = uploadResult.PublicId; // Update the public ID
             }
-         
+
+            // **Save other changes even if the image is not updated**
             await _employeeRepository.UpdateEmployeeAsync(employee);
 
             return Ok(employee);
         }
+
+
+
+
+
+
 
 
         [HttpDelete("{id}")]

@@ -24,13 +24,23 @@ export class EmployeeCreateComponent {
   image?: File;
 
   constructor(private employeeService: EmployeeService, private router: Router) { }
-
   onSubmit(): void {
-    this.employeeService.createEmployee(this.employee, this.image).subscribe(
-      () => this.router.navigate(['/employees']),
-      error => console.error('Error creating employee', error)
-    );
+    this.employeeService.createEmployee(this.employee, this.image).subscribe({
+      next: () => {
+        
+        this.router.navigate(['//app-hr/app-employee-lists']);
+      },
+      error: (error) => {
+   
+        console.error('Error creating employee', error);
+        alert('An error occurred while creating the employee. Please try again.');
+        
+       
+      }
+    });
   }
+
+
 
   onFileChange(event: any): void {
     if (event.target.files.length > 0) {

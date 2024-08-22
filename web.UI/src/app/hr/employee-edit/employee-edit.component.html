@@ -1,30 +1,74 @@
 
-<div>
-  <h2>Edit Employee</h2>
-  <form (ngSubmit)="onSubmit()">
-    <label>Name:
-      <input [(ngModel)]="employee.name" name="name" required>
-    </label>
-    <label>Email:
-      <input [(ngModel)]="employee.email" name="email" required>
-    </label>
-    <label>Phone:
-      <input [(ngModel)]="employee.phone" name="phone" required>
-    </label>
-    <label>Date of Birth:
-      <input [(ngModel)]="employee.dateOfBirth" name="dateOfBirth" type="date" required>
-    </label>
-    <label>Address:
-      <input [(ngModel)]="employee.address" name="address" required>
-    </label>
-    <label>Hire Date:
-      <input [(ngModel)]="employee.hireDate" name="hireDate" type="date" required>
-    </label>
-    <label>Image:
-      <!-- Display the image if URL is available -->
-      <img *ngIf="employee.imageUrl" [src]="employee.imageUrl" alt="Employee Image" style="max-width: 100px; max-height: 100px;">
-      <input type="file" (change)="onFileChange($event)">
-    </label>
-    <button type="submit">Update</button>
-  </form>
+ <div class="card cv-style">
+  <div class="card-header text-center">
+    <h2 class="card-title">Edit Employee</h2>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <!-- Image on the Left -->
+      <div class="col-md-4 text-center">
+        <img *ngIf="employee.imageUrl" [src]="employee.imageUrl" alt="Employee Image" class="img-thumbnail mb-3 employee-image">
+        <input type="file" (change)="onFileChange($event)" class="form-control-file cv-input mt-2">
+      </div>
+
+      <!-- Form Fields on the Right -->
+      <div class="col-md-8">
+        <form (ngSubmit)="onSubmit()" class="form-horizontal">
+          <div class="form-group row">
+            <label for="name" class="col-sm-3 col-form-label">Name:</label>
+            <div class="col-sm-9 cv-field">
+              <span class="cv-text">{{ employee.name || 'Enter Name' }}</span>
+              <input [(ngModel)]="employee.name" name="name" id="name" class="form-control cv-input" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="email" class="col-sm-3 col-form-label">Email:</label>
+            <div class="col-sm-9 cv-field">
+              <span class="cv-text">{{ employee.email || 'Enter Email' }}</span>
+              <input [(ngModel)]="employee.email" name="email" id="email" class="form-control cv-input" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="phone" class="col-sm-3 col-form-label">Phone:</label>
+            <div class="col-sm-9 cv-field">
+              <span class="cv-text">{{ employee.phone || 'Enter Phone' }}</span>
+              <input [(ngModel)]="employee.phone" name="phone" id="phone" class="form-control cv-input" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="dateOfBirth" class="col-sm-3 col-form-label">Date of Birth:</label>
+            <div class="col-sm-9 cv-field">
+              <span class="cv-text">{{ employee.dateOfBirth || 'Enter Date of Birth' }}</span>
+              <input [(ngModel)]="employee.dateOfBirth" name="dateOfBirth" id="dateOfBirth" type="date" class="form-control cv-input" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="address" class="col-sm-3 col-form-label">Address:</label>
+            <div class="col-sm-9 cv-field">
+              <span class="cv-text">{{ employee.address || 'Enter Address' }}</span>
+              <input [(ngModel)]="employee.address" name="address" id="address" class="form-control cv-input" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="hireDate" class="col-sm-3 col-form-label">Hire Date:</label>
+            <div class="col-sm-9 cv-field">
+              <span class="cv-text">{{ employee.hireDate || 'Enter Hire Date' }}</span>
+              <input [(ngModel)]="employee.hireDate" name="hireDate" id="hireDate" type="date" class="form-control cv-input" required>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <div class="col-sm-12">
+              <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

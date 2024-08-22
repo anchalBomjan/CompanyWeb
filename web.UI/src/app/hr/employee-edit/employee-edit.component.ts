@@ -51,22 +51,7 @@ export class EmployeeEditComponent {
     return date.toISOString();
   }
 
-  // onSubmit(): void {
-  //   const id = this.employee.employeeId!;
-    
-  //   const updatedEmployee = {
-  //     ...this.employee,
-  //     dateOfBirth: this.convertDateForBackend(this.employee.dateOfBirth),
-  //     hireDate: this.convertDateForBackend(this.employee.hireDate)
-  //   };
 
-  //   this.employeeService.updateEmployee(id, updatedEmployee, this.image).subscribe({
-  //     next: () => this.router.navigate(['/app-hr/app-employee-list/']),
-  //     error: (error) => console.error('Error updating employee', error),
-
-      
-  //   });
-  // }
 
   onSubmit(): void {
     const id = this.employee.employeeId!;
