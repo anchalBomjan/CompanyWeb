@@ -13,6 +13,7 @@ import { RolesComponent } from './admin/roles/roles.component';
 
 import { authGuard } from './guards/auth.guard';
 import { EmployeeCreateComponent } from './hr/employee-create/employee-create.component';
+import { EmployeeEditComponent } from './hr/employee-edit/employee-edit.component';
 import { EmployeeListComponent } from './hr/employee-list/employee-list.component';
 
 import { HRComponent } from './hr/hr.component';
@@ -53,7 +54,8 @@ export const routes: Routes = [
    component:HRComponent,
    children: [
       {path:'app-employee-create', component:EmployeeCreateComponent},
-      {path:'app-employee-list',component:EmployeeListComponent}
+      {path:'app-employee-list',component:EmployeeListComponent},
+      {path:'app-employee-edit/:id',component:EmployeeEditComponent}
      ]   
    },
    

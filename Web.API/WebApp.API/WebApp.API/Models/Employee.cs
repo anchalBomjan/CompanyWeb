@@ -15,7 +15,7 @@ namespace WebApp.API.Models
         public string Address { get; set; }
         public DateTime HireDate { get; set; }
 
-        public string? PublicId { get; set; }
+        public string? PublicId { get; set; } 
 
         public ICollection<EmployeeDetail> EmployeeDetails { get; set; }
     }

@@ -8,13 +8,11 @@ import { EmployeeService } from '../../services/employee.service';
 @Component({
   selector: 'app-employee-edit',
   standalone: true,
-  imports: [CommonModule,FormsModule,RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './employee-edit.component.html',
-  styleUrl: './employee-edit.component.css'
+  styleUrls: ['./employee-edit.component.css']
 })
 export class EmployeeEditComponent {
-
-
   employee: IEmployee = {
     employeeId: 0,
     name: '',
@@ -30,24 +28,80 @@ export class EmployeeEditComponent {
     private employeeService: EmployeeService,
     private route: ActivatedRoute,
     private router: Router
-  ) 
-  { 
+  ) {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.employeeService.getEmployee(id).subscribe(
-      data => this.employee = data,
-      error => console.error('Error fetching employee', error)
-    );
+    this.employeeService.getEmployee(id).subscribe({
+      next: (data) => {
+        this.employee = data;
+        this.employee.dateOfBirth = this.formatDate(this.employee.dateOfBirth);
+        this.employee.hireDate = this.formatDate(this.employee.hireDate);
+      },
+      error: (error) => console.error('Error fetching employee', error),
+    });
   }
 
-  
+  formatDate(dateString: string): string {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toISOString().split('T')[0]; // Convert to "yyyy-MM-dd"
+  }
+  convertDateForBackend(dateString: string): string {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toISOString();
+  }
+
+  // onSubmit(): void {
+  //   const id = this.employee.employeeId!;
+    
+  //   const updatedEmployee = {
+  //     ...this.employee,
+  //     dateOfBirth: this.convertDateForBackend(this.employee.dateOfBirth),
+  //     hireDate: this.convertDateForBackend(this.employee.hireDate)
+  //   };
+
+  //   this.employeeService.updateEmployee(id, updatedEmployee, this.image).subscribe({
+  //     next: () => this.router.navigate(['/app-hr/app-employee-list/']),
+  //     error: (error) => console.error('Error updating employee', error),
+
+      
+  //   });
+  // }
 
   onSubmit(): void {
     const id = this.employee.employeeId!;
-    this.employeeService.updateEmployee(id, this.employee, this.image).subscribe(
-      () => this.router.navigate(['/employees']),
-      error => console.error('Error updating employee', error)
-    );
+    
+    // Convert dates to backend-compatible format
+    const updatedEmployee = {
+      ...this.employee,
+      dateOfBirth: this.convertDateForBackend(this.employee.dateOfBirth),
+      hireDate: this.convertDateForBackend(this.employee.hireDate)
+    };
+  
+    // Create FormData
+    const formData = new FormData();
+    formData.append('Name', updatedEmployee.name);
+    formData.append('Email', updatedEmployee.email);
+    formData.append('Phone', updatedEmployee.phone);
+    formData.append('DateOfBirth', updatedEmployee.dateOfBirth);
+    formData.append('Address', updatedEmployee.address);
+    formData.append('HireDate', updatedEmployee.hireDate);
+    
+    // Append image only if present
+    if (this.image) {
+      formData.append('Image', this.image);
+    }
+  
+    // Call the updateEmployee method
+    this.employeeService.updateEmployee(id, formData).subscribe({
+      next: () => this.router.navigate(['/app-hr/app-employee-list/']),
+      error: (error) => {
+        console.error('Error updating employee', error);
+        console.log('Error details:', error.error);
+      },
+    });
   }
+  
 
   onFileChange(event: any): void {
     if (event.target.files.length > 0) {

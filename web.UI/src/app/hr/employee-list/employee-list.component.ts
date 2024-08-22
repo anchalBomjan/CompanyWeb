@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
 import { IEmployee } from '../../interface/Employee';
 import { EmployeeService } from '../../services/employee.service';
 
@@ -15,31 +15,31 @@ import { EmployeeService } from '../../services/employee.service';
 export class EmployeeListComponent {
   employees: IEmployee[] = [];
 
-  constructor(private employeeService: EmployeeService)
+  constructor(private employeeService: EmployeeService,private router:Router)
    {
     this.loadEmployees();
    }
 
-
-
-  loadEmployees(): void {
-    this.employeeService.getAllEmployees().subscribe(
-      (data: IEmployee[]) => this.employees = data,
-      error => console.error('Error loading employees', error)
-    );
+   loadEmployees(): void {
+    this.employeeService.getAllEmployees().subscribe({
+      next: (data: IEmployee[]) => this.employees = data,
+      error: (error) => console.error('Error loading employees', error)
+    });
   }
+
+ 
 
   editEmployee(id: number): void {
     // Navigate to edit page
-    window.location.href = `/employees/edit/${id}`;
+    this.router.navigate(['/app-hr/app-employee-edit', id]);
   }
 
   deleteEmployee(id: number): void {
     if (confirm('Are you sure you want to delete this employee?')) {
-      this.employeeService.deleteEmployee(id).subscribe(
-        () => this.loadEmployees(),
-        error => console.error('Error deleting employee', error)
-      );
+      this.employeeService.deleteEmployee(id).subscribe({
+        next: () => this.loadEmployees(),
+        error: (error) => console.error('Error deleting employee', error)
+      });
     }
   }
 }

@@ -30,6 +30,21 @@ namespace WebApp.API.Controllers
 
             return Ok(employees);
         }
+        // GET api/employees/{id}
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetEmployeeById(int id)
+        {
+            var employee = await _employeeRepository.GetEmployeeByIdAsync(id);
+
+            if (employee == null)
+            {
+                return NotFound(); 
+            }
+
+            return Ok(employee); 
+        }
+
+
 
         [HttpPost]
         public async Task<IActionResult> CreateEmployee([FromForm] EmployeeDto employeeDto)
@@ -68,6 +83,15 @@ namespace WebApp.API.Controllers
             if (employee == null)
                 return NotFound();
 
+            // Update employee properties
+            employee.Name = employeeDto.Name;
+            employee.Email = employeeDto.Email;
+            employee.Phone = employeeDto.Phone;
+            employee.DateOfBirth = employeeDto.DateOfBirth;
+            employee.Address = employeeDto.Address;
+            employee.HireDate = employeeDto.HireDate;
+
+            // Handle image if present
             if (employeeDto.Image != null && employeeDto.Image.Length > 0)
             {
                 var uploadResult = await _photoServices.AddPhotoAsync(employeeDto.Image);
@@ -86,21 +110,11 @@ namespace WebApp.API.Controllers
                 employee.ImageUrl = uploadResult.SecureUrl.AbsoluteUri;
                 employee.PublicId = uploadResult.PublicId; // Update the public ID
             }
-
-            employee.Name = employeeDto.Name;
-            employee.Email = employeeDto.Email;
-            employee.Phone = employeeDto.Phone;
-            employee.Address = employeeDto.Address;
-            employee.DateOfBirth = employeeDto.DateOfBirth;
-            employee.HireDate = employeeDto.HireDate;
-
+         
             await _employeeRepository.UpdateEmployeeAsync(employee);
 
             return Ok(employee);
         }
-
-
-
 
 
         [HttpDelete("{id}")]
