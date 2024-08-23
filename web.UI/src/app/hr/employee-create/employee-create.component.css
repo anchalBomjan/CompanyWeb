@@ -1,0 +1,117 @@
+/* Container Styling */
+.employee-create-container {
+    max-width: 800px;
+    background-color: #ffffff; /* White background for the form container */
+    padding: 40px; /* Padding for spacing */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    margin: 0 auto; /* Center horizontally */
+  }
+  
+  /* Employee Header Styling */
+  .employee-create-container h2 {
+    background-color: #004d00; /* Dark green background for header */
+    color: #ffffff; /* White text color */
+    padding: 15px; /* Padding around text */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 2rem; /* Font size for emphasis */
+    font-weight: 600; /* Bold font weight */
+    text-align: center; /* Center the text */
+    margin: -40px -40px 30px -40px; /* Adjust margin to extend background color to the edges */
+  }
+  
+  /* Label Styling */
+  .employee-form .form-label {
+    font-weight: 500;
+    color: #495057;
+    font-size: 1rem; /* Font size for labels */
+  }
+  
+  /* Input Field Styling */
+  .employee-form .form-control {
+    border-radius: 8px; /* Rounded corners */
+    border-color: #ced4da;
+    padding: 10px; /* Padding inside input fields */
+    font-size: 1rem; /* Font size for input text */
+  }
+  
+  /* Focus State for Input Fields */
+  .employee-form .form-control:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 8px rgba(128, 189, 255, 0.5);
+  }
+  
+  /* Form Group Spacing */
+  .employee-form .form-group {
+    margin-bottom: 1.5rem; /* Spacing between form groups */
+  }
+  
+  /* Datepicker Container Styling */
+  .datepicker-container {
+    border: 1px solid #ced4da;
+    border-radius: 8px; /* Match border radius */
+    padding: 10px;
+    background-color: #ffffff;
+  }
+  
+  /* Button Styling */
+  .btn-primary {
+    background-color: #007bff; /* Blue background */
+    border-color: #007bff;
+    border-radius: 25px; /* Rounded button corners */
+    padding: 12px 24px; /* Padding inside the button */
+    font-size: 1rem; /* Font size for button text */
+    font-weight: 600; /* Bold text */
+    text-transform: uppercase; /* Uppercase text */
+    transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+  }
+  
+  /* Button Hover State */
+  .btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #004085; /* Darker border on hover */
+  }
+  
+  /* Media Queries for Responsive Design */
+  @media (max-width: 768px) {
+    .employee-create-container {
+      padding: 20px; /* Reduced padding for smaller screens */
+    }
+  
+    .employee-form .form-label {
+      font-size: 0.875rem; /* Smaller font size for labels */
+    }
+  
+    .employee-form .form-control {
+      font-size: 0.875rem; /* Smaller font size for input text */
+    }
+  
+    .btn-primary {
+      padding: 10px 20px; /* Adjust padding for buttons */
+      font-size: 0.875rem; /* Smaller font size for button text */
+    }
+  
+    .form-section {
+      padding: 10px; /* Reduced padding for smaller screens */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .employee-create-container {
+      padding: 15px; /* Further reduced padding for very small screens */
+    }
+  
+    .employee-form .form-label {
+      font-size: 0.75rem; /* Smaller font size for labels on very small screens */
+    }
+  
+    .employee-form .form-control {
+      font-size: 0.75rem; /* Smaller font size for input text on very small screens */
+    }
+  
+    .btn-primary {
+      padding: 8px 16px; /* Further reduced padding for buttons */
+      font-size: 0.75rem; /* Smaller font size for button text on very small screens */
+    }
+  }
+  

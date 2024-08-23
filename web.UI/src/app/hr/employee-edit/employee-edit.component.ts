@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { IEmployee } from '../../interface/Employee';
 import { EmployeeService } from '../../services/employee.service';
 
@@ -27,7 +28,8 @@ export class EmployeeEditComponent {
   constructor(
     private employeeService: EmployeeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private toastr:ToastrService
   ) {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.employeeService.getEmployee(id).subscribe({
@@ -35,6 +37,8 @@ export class EmployeeEditComponent {
         this.employee = data;
         this.employee.dateOfBirth = this.formatDate(this.employee.dateOfBirth);
         this.employee.hireDate = this.formatDate(this.employee.hireDate);
+
+
       },
       error: (error) => console.error('Error fetching employee', error),
     });
@@ -78,13 +82,29 @@ export class EmployeeEditComponent {
     }
   
     // Call the updateEmployee method
+    // this.employeeService.updateEmployee(id, formData).subscribe({
+    //   next: () => this.router.navigate(['/app-hr/app-employee-list/']),
+    //   error: (error) => {
+    //     console.error('Error updating employee', error);
+    //     console.log('Error details:', error.error);
+
+        
+    //   },
+    // });
     this.employeeService.updateEmployee(id, formData).subscribe({
-      next: () => this.router.navigate(['/app-hr/app-employee-list/']),
+      next: () => {
+        this.toastr.success('Employee updated successfully', 'Success');
+        this.router.navigate(['/app-hr/app-employee-list/']);
+      },
       error: (error) => {
         console.error('Error updating employee', error);
         console.log('Error details:', error.error);
+    
+        this.toastr.error('Failed to update employee', 'Error');
       },
     });
+    
+
   }
   
 

@@ -1,5 +1,5 @@
-<p>employee-create works!</p>
-<div>
+
+ <!-- <div>
     <h2>Create Employee</h2>
     <form (ngSubmit)="onSubmit()">
       <label>Name:
@@ -25,5 +25,78 @@
       </label>
       <button type="submit">Create</button>
     </form>
+  </div> -->
+   
+
+   
+  
+
+   
+
+  <!-- <div class="row">
+    <div class="col-xs-12 col-12 col-md-4 form-group mb-3">
+      <input type="text"
+             placeholder="Datepicker"
+             class="form-control"
+             bsDatepicker>
+    </div>
+  </div> -->
+
+   <div class="container employee-create-container mt-5">
+    <h2 class="text-center mb-4">Create Employee</h2>
+    <form (ngSubmit)="onSubmit()" class="employee-form">
+      
+     
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Name</label>
+          <input [(ngModel)]="employee.name" name="name" id="name" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input [(ngModel)]="employee.email" name="email" id="email" type="email" class="form-control" required>
+        </div>
+      </div>
+  
+      
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="phone" class="form-label">Phone</label>
+          <input [(ngModel)]="employee.phone" name="phone" id="phone" class="form-control" required>
+        </div>
+        <div class="col-md-6">
+          <label for="hireDate" class="form-label">Hire Date</label>
+          <input [(ngModel)]="employee.hireDate" name="hireDate" type="text" class="form-control" bsDatepicker id="hireDate" required>
+        </div>
+      </div>
+  
+     
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="dateOfBirth" class="form-label">Date of Birth</label>
+          <input [(ngModel)]="employee.dateOfBirth" name="dateOfBirth" type="text" class="form-control" bsDatepicker id="dateOfBirth" required>
+        </div>
+        <div class="col-md-6">
+          <label for="address" class="form-label">Address</label>
+          <input [(ngModel)]="employee.address" name="address" id="address" class="form-control" required>
+        </div>
+      </div>
+  
+      
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <label for="image" class="form-label">Image</label>
+          <input type="file" (change)="onFileChange($event)" class="form-control" id="image">
+        </div>
+      </div>
+  
+      
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-lg">Create</button>
+      </div>
+    </form>
   </div>
+   
+
+   
   
