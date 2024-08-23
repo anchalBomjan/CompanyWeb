@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink, RouterModule } from '@angular/router';
+import { Router,  RouterModule } from '@angular/router';
 import { IEmployee } from '../../interface/Employee';
 import { EmployeeService } from '../../services/employee.service';
 
@@ -43,3 +43,5 @@ export class EmployeeListComponent {
     }
   }
 }
+
+

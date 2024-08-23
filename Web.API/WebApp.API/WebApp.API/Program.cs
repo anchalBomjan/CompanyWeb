@@ -38,6 +38,10 @@ builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection(
 
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
+builder.Services.AddScoped<IEmployeeDetailRepository, EmployeeDetailRepository>();
+builder.Services.AddScoped<IEmployeeDetailService, EmployeeDetailService>();
+
+
 
 // Register the PhotoService
 builder.Services.AddScoped<IPhotoServices,PhotoService>();
