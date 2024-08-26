@@ -15,6 +15,18 @@ namespace WebApp.API
 
             CreateMap<Department, DepartmentDto>().ReverseMap();
             CreateMap<Designation, DesignationDto>().ReverseMap();
+
+
+
+
+
+            CreateMap<EmployeeDetail, EmployeeDetailDTO>()
+           .ForMember(dest => dest.EmployeeName, opt => opt.MapFrom(src => src.Employee.Name))
+           .ForMember(dest => dest.DepartmentName, opt => opt.MapFrom(src => src.Department.Name))
+           .ForMember(dest => dest.DesignationTitle, opt => opt.MapFrom(src => src.Designation.Title));
+
+            CreateMap<EmployeeDetailCreateDTO, EmployeeDetail>();
+            CreateMap<EmployeeDetailUpdateDTO, EmployeeDetail>();
         }
     }
 }

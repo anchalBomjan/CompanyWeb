@@ -71,21 +71,26 @@ export class RolesComponent {
     );
   }
   removeRoleFromUser(username: string, roleName: string) {
-    this.adminService.removeRoleFromUser(username, roleName).subscribe({
-      next: (response) => {
-        console.log(response);
-        alert('Role removed successfully');
-        this.getAllUsersWithRoles(); // Refresh users with roles list after removal
-      },
-      error: (error) => {
-        console.error(error);
-        alert('Error removing role');
-      },
-      complete: () => {
-        // Optional: Perform any cleanup or final actions if needed
-        console.log('Role removal operation completed.');
-      }
-    });
+    var confirm=window.confirm("Do you want to delete this user?");
+    if(confirm)
+    {
+      this.adminService.removeRoleFromUser(username, roleName).subscribe({
+        next: (response) => {
+          console.log(response);
+          alert('Role removed successfully');
+          this.getAllUsersWithRoles(); // Refresh users with roles list after removal
+        },
+        error: (error) => {
+          console.error(error);
+          alert('Error removing role');
+        },
+        complete: () => {
+          // Optional: Perform any cleanup or final actions if needed
+          console.log('Role removal operation completed.');
+        }
+      });
+    }
+
   }
   
 }

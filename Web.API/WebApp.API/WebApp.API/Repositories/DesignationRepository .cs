@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApp.API.Data;
 using WebApp.API.Models;
+using WebApp.API.Models.DTOs;
 using WebApp.API.Repositories.IRepository;
 
 namespace WebApp.API.Repositories
@@ -45,6 +46,15 @@ namespace WebApp.API.Repositories
                 _context.Designations.Remove(designation);
                 await _context.SaveChangesAsync();
             }
+        }
+
+
+
+        public async Task<IEnumerable<Designation>> GetDesignationsByDepartmentAsync(int departmentId)
+        {
+            return await _context.Designations
+                .Where(d => d.DepartmentId == departmentId)
+                .ToListAsync();
         }
     }
 }

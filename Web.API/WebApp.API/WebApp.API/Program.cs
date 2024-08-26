@@ -9,8 +9,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.Data.SqlClient;
-using System.Data;
+
 using WebApp.API;
 using WebApp.API.Helper;
 using WebApp.API.Services.IServices;
@@ -39,9 +38,6 @@ builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection(
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 builder.Services.AddScoped<IEmployeeDetailRepository, EmployeeDetailRepository>();
-builder.Services.AddScoped<IEmployeeDetailService, EmployeeDetailService>();
-
-
 
 // Register the PhotoService
 builder.Services.AddScoped<IPhotoServices,PhotoService>();
@@ -138,3 +134,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+

@@ -81,6 +81,27 @@ namespace WebApp.API.Controllers
             await _designationRepository.DeleteDesignationAsync(id);
             return NoContent();
         }
+
+
+
+        // GET api/designation/by-department/{departmentId}
+        [HttpGet("by-department/{departmentId}")]
+        public async Task<IActionResult> GetDesignationsByDepartment(int departmentId)
+        {
+            if (departmentId <= 0)
+            {
+                return BadRequest("Invalid department ID.");
+            }
+
+            var designations = await _designationRepository.GetDesignationsByDepartmentAsync(departmentId);
+
+            if (designations == null || !designations.Any())
+            {
+                return NotFound("No designations found for the given department.");
+            }
+
+            return Ok(designations);
+        }
     }
 }
 
