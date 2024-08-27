@@ -14,6 +14,7 @@ import { RolesComponent } from './admin/roles/roles.component';
 import { authGuard } from './guards/auth.guard';
 import { EmployeeCreateComponent } from './hr/employee-create/employee-create.component';
 import { EmployeeDetailFormComponent } from './hr/employee-detail-form/employee-detail-form.component';
+import { EmployeeDetailListComponent } from './hr/employee-detail-list/employee-detail-list.component';
 import { EmployeeEditComponent } from './hr/employee-edit/employee-edit.component';
 import { EmployeeListComponent } from './hr/employee-list/employee-list.component';
 
@@ -57,7 +58,14 @@ export const routes: Routes = [
       {path:'app-employee-create', component:EmployeeCreateComponent},
       {path:'app-employee-list',component:EmployeeListComponent},
       {path:'app-employee-edit/:id',component:EmployeeEditComponent},
-      {path:'app-employee-detail-form',component:EmployeeDetailFormComponent}
+
+      {path:'app-employee-detail-form',component:EmployeeDetailFormComponent},
+   
+      {path:'app-employee-detail-list',component:EmployeeDetailListComponent},
+      { path: 'app-employee-detail-form/:id', component: EmployeeDetailFormComponent } // Path for employee detail form with ID
+
+
+
      ]   
    },
    

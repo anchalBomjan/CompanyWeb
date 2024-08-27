@@ -1,9 +1,9 @@
 
 
 
-<div class="container mt-5">
+ <!-- <div class="container mt-5">
   <div class="shadow p-4 form-container">
-    <h4>Create Employee Detail Form</h4>
+    <h4>Assigning Employee with Department</h4>
 
     <form (ngSubmit)="onSubmit()" #employeeDetailForm="ngForm">
       <div class="form-group">
@@ -34,6 +34,46 @@
       </div>
       
       <button type="submit" class="btn btn-primary mt-3">Submit</button>
+    </form>
+  </div>
+</div> 
+ -->
+ <div class="container mt-5">
+  <div class="shadow p-4 form-container">
+    <h4>{{ isEdit ? 'Edit Employee Detail' : 'Assign Employee to Department' }}</h4>
+
+    <form (ngSubmit)="onSubmit()" #employeeDetailForm="ngForm">
+      <div class="form-group">
+        <label for="employee">Select Employee</label>
+        <select id="employee" class="form-control" [(ngModel)]="employeeDetail.employeeId" name="employeeId" required>
+          <option *ngFor="let employee of employees" [value]="employee.employeeId">
+            {{ employee.name }}
+          </option>
+        </select>
+      </div>
+      
+      <div class="form-group">
+        <label for="department">Select Department</label>
+        <select id="department" class="form-control" [(ngModel)]="employeeDetail.departmentId" name="departmentId" required (change)="onDepartmentChange($event)">
+          <option *ngFor="let department of departments" [value]="department.departmentId">
+            {{ department.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="designation">Select Designation</label>
+        <select id="designation" class="form-control" [(ngModel)]="employeeDetail.designationId" name="designationId" required>
+          <option *ngFor="let designation of designations" [value]="designation.designationId">
+            {{ designation.title }}
+          </option>
+        </select>
+      </div>
+      
+      <button type="submit" class="btn btn-primary mt-3">
+        {{ isEdit ? 'Edit' : 'Submit' }}
+      </button>
+      <button type="button" class="btn btn-secondary mt-3" routerLink="/app-hr/app-employee-detail-list">Cancel</button>
     </form>
   </div>
 </div>

@@ -32,6 +32,10 @@ export class DesignationService {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 
+
+
+
+  
   getDesignationsByDepartment(departmentId: number): Observable<IDesignation[]> {
     return this.http.get<IDesignation[]>(`${this.apiUrl}/by-department/${departmentId}`);
   }
