@@ -27,6 +27,10 @@ export class EmployeeDetailService {
   }
 
   // Get EmployeeDetail by ID
+  // getEmployeeDetailById(id: number): Observable<IEmployeeDetailDTO> {
+  //   return this.http.get<IEmployeeDetailDTO>(`${this.apiUrl}/${id}`);
+  // }
+
   getEmployeeDetailById(id: number): Observable<IEmployeeDetailDTO> {
     return this.http.get<IEmployeeDetailDTO>(`${this.apiUrl}/${id}`);
   }
