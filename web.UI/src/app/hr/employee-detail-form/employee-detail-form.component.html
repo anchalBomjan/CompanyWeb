@@ -34,10 +34,13 @@
       <button type="submit" class="btn btn-primary mt-3">
         {{ isEdit ? 'Edit' : 'Submit' }}
       </button>
-      <button type="button" class="btn btn-secondary mt-3" routerLink="/app-hr/app-employee-detail-list">Cancel</button>
+     
+      <button type="button" class="btn btn-secondary mt-3" (click)="cancel()">Cancel</button>
+
+      
     </form>
   </div>
 </div> 
 
+  
  
-

@@ -55,7 +55,9 @@ export class EmployeeDetailFormComponent {
   }
 
 
-
+  cancel() {
+    this.router.navigate(['/app-hr/app-employee-detail-list']);
+  }
  
   //this  line of code helps to finds the all attributes of ID  and helps to map  ID with  name 
   loadEmployeeDetail(id: number): void {

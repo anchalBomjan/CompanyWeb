@@ -8,10 +8,9 @@
         Add
       </button>
       <ul *bsDropdownMenu class="dropdown-menu">
-        <li><a class="dropdown-item" [routerLink]="['/app-admin/app-department-list']">Department</a></li>
-        <li><a class="dropdown-item" [routerLink]="['/app-admin/app-designation-list']">Designation</a></li>
-        <li><a class="dropdown-item" [routerLink]="['/app-admin/something-else']">Something else here</a></li>
-     
+        <li><a class="dropdown-item" [routerLink]="['/app-admin/app-department-form']">Create Department</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/app-admin/app-designation-form']">Create Designation</a></li>
+        
       </ul>
     </div>
     
@@ -23,7 +22,9 @@
       <ul *bsDropdownMenu class="dropdown-menu">
         <li><a class="dropdown-item" [routerLink]="['/app-admin/employees-with-salary']">EmployeesWithSalary</a></li>
         <li><a class="dropdown-item" [routerLink]="['/app-admin/app-dapartmentwith-designation']">DepartmentWithDesignation</a></li>
-        <li><a class="dropdown-item" [routerLink]="['/app-admin/something-else']">Something else here</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/app-admin/app-department-list']">DepartmentList</a></li>
+        <li><a class="dropdown-item" [routerLink]="['/app-admin/app-designation-list']">DesignationList</a></li>
+       
       </ul>
     </div>
     

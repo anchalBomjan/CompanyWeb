@@ -1,0 +1,11 @@
+.employee-list-heading {
+    background-color: darkgreen;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    margin-bottom: 20px; /* Adds space between heading and table */
+  }
+  

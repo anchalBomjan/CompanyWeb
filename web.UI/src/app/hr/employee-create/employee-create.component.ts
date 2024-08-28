@@ -63,6 +63,11 @@ export class EmployeeCreateComponent {
   }
 
 
+  
+  cancel() {
+    this.router.navigate(['/app-hr/app-employee-list']);
+  }
+
 }
 
 
