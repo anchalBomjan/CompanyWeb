@@ -54,31 +54,39 @@ export class EmployeeDetailFormComponent {
     }
   }
 
+
+
+ 
+  //this  line of code helps to finds the all attributes of ID  and helps to map  ID with  name 
   loadEmployeeDetail(id: number): void {
     this.employeeDetailService.getEmployeeDetailById(id).subscribe({
       next: (employeeDetail: IEmployeeDetailDTO) => {
-        // Ensure employees and departments are loaded before updating the form
-        this.loadEmployees();
-        this.loadDepartments(() => {
-          // Update the form after loading employees and departments
-          console.log(employeeDetail);
-          
-          this.employeeDetail = {
-            employeeId: employeeDetail.employeeDetailId,
-            departmentId: this.departments.find(dept => dept.name === employeeDetail.departmentName)?.departmentId ?? 0,
-            designationId: this.designations.find(des => des.title === employeeDetail.designationTitle)?.designationId ?? 0
-          };
-
-
-          this.loadEmployees();
-          this.loadDepartments();
-          this.loadDesignations(this.employeeDetail.departmentId);
+        // Load employees list
+        this.loadEmployees(() => {
+          // Find the employeeId using employeeName or any unique property
+          const employee = this.employees.find(emp => emp.name === employeeDetail.employeeName); // Adjust employeeName if necessary
+          const employeeId = employee?.employeeId ?? 0;
   
-          console.log(employeeDetail.designationTitle);
-          // Load designations for the selected department if in edit mode
-          if (this.isEdit && this.employeeDetail.departmentId) {
-            this.loadDesignations(this.employeeDetail.departmentId);
-          }
+          // Load departments list
+          this.loadDepartments(() => {
+            // Find the departmentId using departmentName
+            const department = this.departments.find(dept => dept.name === employeeDetail.departmentName);
+            const departmentId = department?.departmentId ?? 0;
+  
+            // Load designations for the selected department
+            this.loadDesignations(departmentId, () => {
+              // Find the designationId using designationTitle
+              const designation = this.designations.find(des => des.title === employeeDetail.designationTitle);
+              const designationId = designation?.designationId ?? 0;
+  
+              // Populate employeeDetail object with all found ids
+              this.employeeDetail = {
+                employeeId: employeeId,  // Set the found employeeId
+                departmentId: departmentId,  // Set the found departmentId
+                designationId: designationId  // Set the found designationId
+              };
+            });
+          });
         });
       },
       error: (error) => {
@@ -87,6 +95,7 @@ export class EmployeeDetailFormComponent {
       }
     });
   }
+
 
   loadEmployees(callback?: () => void): void {
     this.employeeService.getAllEmployees().subscribe({
@@ -100,7 +109,7 @@ export class EmployeeDetailFormComponent {
       }
     });
   }
-
+  
   loadDepartments(callback?: () => void): void {
     this.departmentService.getDepartments().subscribe({
       next: (departments: IDepartment[]) => {
@@ -113,17 +122,12 @@ export class EmployeeDetailFormComponent {
       }
     });
   }
-
-  loadDesignations(departmentId: number): void {
+  
+  loadDesignations(departmentId: number, callback?: () => void): void {
     this.designationService.getDesignationsByDepartment(departmentId).subscribe({
       next: (designations: IDesignation[]) => {
         this.designations = designations;
-        
-        
-        // Reset designationId if not found in the list (in case of edit mode)
-        if (this.isEdit && !this.designations.some(d => d.designationId === this.employeeDetail.designationId)) {
-          this.employeeDetail.designationId = 0; // Or set to a default value
-        }
+        if (callback) callback();
       },
       error: (error) => {
         console.error('Error fetching designations:', error);
@@ -131,7 +135,7 @@ export class EmployeeDetailFormComponent {
       }
     });
   }
-
+  
   onDepartmentChange(event: Event): void {
     const selectedDepartmentId = (event.target as HTMLSelectElement).value;
     this.loadDesignations(Number(selectedDepartmentId));
@@ -144,7 +148,11 @@ export class EmployeeDetailFormComponent {
         employeeId: this.employeeDetail.employeeId,
         departmentId: this.employeeDetail.departmentId,
         designationId: this.employeeDetail.designationId
+        
       };
+      
+      console.log('Update Data:', updateData);
+      
       this.employeeDetailService.updateEmployeeDetail(this.employeeDetailId, updateData).subscribe({
         next: () => {
           this.toastr.success("Employee detail edited successfully");
@@ -155,7 +163,8 @@ export class EmployeeDetailFormComponent {
           this.toastr.error("Error updating employee detail");
         }
       });
-    } else {
+    }
+    else {
       this.employeeDetailService.createEmployeeDetail(this.employeeDetail).subscribe({
         next: () => {
           this.toastr.success("Employee detail created successfully");

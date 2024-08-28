@@ -4,6 +4,7 @@ using AutoMapper;
 
 namespace WebApp.API
 {
+
     public class MappingProfile:Profile
     {
        public MappingProfile() {
