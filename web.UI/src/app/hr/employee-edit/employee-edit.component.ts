@@ -81,16 +81,7 @@ export class EmployeeEditComponent {
       formData.append('Image', this.image);
     }
   
-    // Call the updateEmployee method
-    // this.employeeService.updateEmployee(id, formData).subscribe({
-    //   next: () => this.router.navigate(['/app-hr/app-employee-list/']),
-    //   error: (error) => {
-    //     console.error('Error updating employee', error);
-    //     console.log('Error details:', error.error);
 
-        
-    //   },
-    // });
     this.employeeService.updateEmployee(id, formData).subscribe({
       next: () => {
         this.toastr.success('Employee updated successfully', 'Success');
@@ -114,3 +105,4 @@ export class EmployeeEditComponent {
     }
   }
 }
+

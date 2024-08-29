@@ -52,6 +52,8 @@ export const routes: Routes = [
 
  
 { 
+
+  
    path:'app-hr',
    component:HRComponent,
    children: [
@@ -68,7 +70,9 @@ export const routes: Routes = [
 
      ]   
    },
+  
    
+
 {path:'app-user',component:UserComponent},
 
 

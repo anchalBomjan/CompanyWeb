@@ -6,7 +6,7 @@ using WebApp.API.Services.IServices;
 
 namespace WebApp.API.Services
 {
-    public class PhotoService:IPhotoServices
+    public class PhotoService : IPhotoServices
     {
 
         private readonly Cloudinary _cloudinary;
@@ -48,3 +48,7 @@ namespace WebApp.API.Services
         }
     }
 }
+
+
+
+
