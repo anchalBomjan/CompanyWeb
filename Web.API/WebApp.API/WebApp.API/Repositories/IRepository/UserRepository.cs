@@ -46,23 +46,7 @@ namespace WebApp.API.Repositories.IRepository
 
         }
 
-        //public async Task<User> GetUserByUsernameAsync(string username)
-        //{
-        //    if (string.IsNullOrEmpty(username))
-        //        throw new ArgumentException("Username cannot be null or empty.", nameof(username));
 
-        //    const string sql = "SELECT * FROM Users WHERE Username = @Username";
-
-        //    using (var connection = _dbConnector.CreateConnection() as SqlConnection)
-        //    {
-        //        if (connection == null)
-        //            throw new InvalidOperationException("Failed to create a SQL connection.");
-
-        //        await connection.OpenAsync(); // Explicitly open the connection
-        //        return await connection.QuerySingleOrDefaultAsync<User>(sql, new { Username = username });
-        //    }
-
-        //}
 
 
         public async Task<User> GetUserByUsernameAsync(string username)

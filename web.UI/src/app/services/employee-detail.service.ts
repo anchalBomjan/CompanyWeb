@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../environment/environment';
 import { IEmployeeDetailCreateDTO } from '../interface/EmployeeDetailCreateDTO';
 import { IEmployeeDetailDTO } from '../interface/EmployeeDetailDTO';
 import { IEmployeeDetailUpdateDTO } from '../interface/EmployeeDetailUpdateDTO';
@@ -12,11 +13,13 @@ export class EmployeeDetailService {
 
 
 
-  private apiUrl = 'https://localhost:44386/api/EmployeeAssigningDetails'; // Adjust the URL based on your API
+ // private apiUrl = 'https://localhost:44386/api/EmployeeAssigningDetails'; // Adjust the URL based on your API
 
+
+  private apiUrl=`${environment.apiUrl}EmployeeAssigningDetails`
   constructor(private http: HttpClient) { }
   // Create EmployeeDetail
-   // Create EmployeeDetail
+ 
    createEmployeeDetail(createDto: IEmployeeDetailCreateDTO): Observable<IEmployeeDetailDTO> {
     return this.http.post<IEmployeeDetailDTO>(`${this.apiUrl}`, createDto);
   }
@@ -26,10 +29,7 @@ export class EmployeeDetailService {
     return this.http.get<IEmployeeDetailDTO[]>(`${this.apiUrl}`);
   }
 
-  // Get EmployeeDetail by ID
-  // getEmployeeDetailById(id: number): Observable<IEmployeeDetailDTO> {
-  //   return this.http.get<IEmployeeDetailDTO>(`${this.apiUrl}/${id}`);
-  // }
+
 
   getEmployeeDetailById(id: number): Observable<IEmployeeDetailDTO> {
     return this.http.get<IEmployeeDetailDTO>(`${this.apiUrl}/${id}`);

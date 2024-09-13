@@ -4,7 +4,6 @@ using AutoMapper;
 
 namespace WebApp.API
 {
-
     public class MappingProfile:Profile
     {
        public MappingProfile() {
@@ -28,6 +27,24 @@ namespace WebApp.API
 
             CreateMap<EmployeeDetailCreateDTO, EmployeeDetail>();
             CreateMap<EmployeeDetailUpdateDTO, EmployeeDetail>();
+
+
+
+
+         
+            CreateMap<Message, MessageDto>()
+                .ForMember(dest => dest.SenderId, opt => opt.MapFrom(src => src.SenderId))
+                .ForMember(dest => dest.RecipientId, opt => opt.MapFrom(src => src.RecipientId))
+                .ForMember(dest => dest.Content, opt => opt.MapFrom(src => src.Content))
+                .ForMember(dest => dest.DateRead, opt => opt.MapFrom(src => src.DateRead))
+                .ForMember(dest => dest.MessageSent, opt => opt.MapFrom(src => src.MessageSent))
+                .ForMember(dest => dest.SenderUsername, opt => opt.MapFrom(src => src.SenderUsername)) // Add this if required
+                .ForMember(dest => dest.RecipientUsername, opt => opt.MapFrom(src => src.RecipientUsername)); // Add this if required
+
+
+
+
+
         }
     }
 }

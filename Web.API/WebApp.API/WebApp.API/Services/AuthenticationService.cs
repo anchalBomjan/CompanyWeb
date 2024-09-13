@@ -22,7 +22,7 @@ public class AuthenticationService
 
     public async Task<string> RegisterAsync(User user, string password)
     {
-        
+
         if (user == null) throw new ArgumentNullException(nameof(user));
         if (string.IsNullOrEmpty(password)) throw new ArgumentException("Password cannot be null or empty.");
 
@@ -94,7 +94,7 @@ public class AuthenticationService
 
     public async Task<string> LoginAsync(string username, string password)
     {
-       
+
 
         if (string.IsNullOrEmpty(username)) throw new ArgumentException("Username cannot be null or empty.");
         if (string.IsNullOrEmpty(password)) throw new ArgumentException("Password cannot be null or empty.");

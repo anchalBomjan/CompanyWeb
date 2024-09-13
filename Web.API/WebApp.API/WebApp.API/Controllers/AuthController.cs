@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.API.Models;
+using WebApp.API.Repositories.IRepository;
 
 namespace WebApp.API.Controllers
 {
@@ -12,10 +13,11 @@ namespace WebApp.API.Controllers
     {
 
         private readonly AuthenticationService _authenticationService;
-
-        public AuthController(AuthenticationService authenticationService)
+        private readonly IUserRepository _userRepository;
+        public AuthController(AuthenticationService authenticationService ,IUserRepository userRepository)
         {
             _authenticationService = authenticationService;
+            _userRepository = userRepository;
         }
 
         [HttpPost("register")]
@@ -83,5 +85,34 @@ namespace WebApp.API.Controllers
 
         }
 
+
+
+
+
+
+
+        // GET: api/users/username/{username}
+        [HttpGet("username/{username}")]
+        public async Task<IActionResult> GetUserByUsername(string username)
+        {
+            try
+            {
+                var user = await _userRepository.GetUserByUsernameAsync(username);
+
+                if (user == null)
+                    return NotFound(new { message = "User not found." });
+
+                return Ok(user);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                // Log exception here
+                return StatusCode(500, new { message = "An error occurred while processing your request.", error = ex.Message });
+            }
+        }
     }
 }

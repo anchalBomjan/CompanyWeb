@@ -25,7 +25,7 @@ namespace WebApp.API.Services
         {
             var claims = new List<Claim>
             {
-            new Claim(JwtRegisteredClaimNames.Sub, user.Username),
+            new Claim(JwtRegisteredClaimNames.UniqueName, user.Username),
             new Claim(JwtRegisteredClaimNames.Email, user.Email),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
@@ -46,8 +46,8 @@ namespace WebApp.API.Services
                 issuer: _issuer,
                 audience: _audience,
                 claims: claims,
-              
-                expires: DateTime.Now.AddHours(1),
+
+                expires: DateTime.Now.AddDays(1),
                 signingCredentials: creds);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

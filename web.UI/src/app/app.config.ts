@@ -4,20 +4,27 @@ import { BrowserAnimationsModule, provideAnimations } from '@angular/platform-br
 
 
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { jwtInterceptor } from './_interceptors/jwt.interceptor';
+import { TimeagoModule } from 'ngx-timeago';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideHttpClient(),
     provideAnimations(),
+
+    
+    provideHttpClient(withInterceptors([jwtInterceptor])),
     importProvidersFrom(
       BrowserAnimationsModule,
       RouterModule, // Ensure RouterModule is provided
       ToastrModule.forRoot(),
+      TimeagoModule.forRoot(),
      
-      
+     
     ),
 
   

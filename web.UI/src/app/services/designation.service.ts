@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../environment/environment';
 import { IDesignation } from '../interface/Designation';
 
 @Injectable({
@@ -8,8 +9,8 @@ import { IDesignation } from '../interface/Designation';
 })
 export class DesignationService {
 
-  private apiUrl = 'https://localhost:44386/api/Designation'; // Adjust API URL as needed
-
+ // private apiUrl = 'https://localhost:44386/api/Designation'; // Adjust API URL as needed
+private apiUrl=`${environment.apiUrl}Designation`;
   constructor(private http: HttpClient) {}
 
   getDesignations(): Observable<IDesignation[]> {

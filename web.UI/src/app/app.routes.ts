@@ -19,6 +19,8 @@ import { EmployeeEditComponent } from './hr/employee-edit/employee-edit.componen
 import { EmployeeListComponent } from './hr/employee-list/employee-list.component';
 
 import { HRComponent } from './hr/hr.component';
+import { MessageThreadComponent } from './message-thread/message-thread.component';
+import { MessageComponent } from './message/message.component';
 import { UserComponent } from './user/user.component';
 
 export const routes: Routes = [
@@ -44,8 +46,9 @@ export const routes: Routes = [
       { path: 'app-designation-list', component: DesignationListComponent }, // For listing all designations
       { path: 'app-designation-form/:id', component: DesignationFormComponent }, // For editing a designation
       { path: 'app-designation-form', component: DesignationFormComponent }, // For creating a new designation
-     {path: 'app-dapartmentwith-designation',component:DepartmentwithDesignationComponent}
-
+     
+      {path: 'app-dapartmentwith-designation',component:DepartmentwithDesignationComponent},
+      {path:'app-message',component:MessageComponent},
 
     ]
   },
@@ -64,7 +67,12 @@ export const routes: Routes = [
       {path:'app-employee-detail-form',component:EmployeeDetailFormComponent},
    
       {path:'app-employee-detail-list',component:EmployeeDetailListComponent},
-      { path: 'app-employee-detail-form/:id', component: EmployeeDetailFormComponent } // Path for employee detail form with ID
+      { path: 'app-employee-detail-form/:id', component: EmployeeDetailFormComponent }, // Path for employee detail form with ID
+
+
+      {path:'app-message',component:MessageComponent}, // Add this route for member profile navigation
+    //  { path: 'members/:username', component: UserComponent },
+       { path: 'app-message-thread/:username', component:MessageThreadComponent }
 
 
 

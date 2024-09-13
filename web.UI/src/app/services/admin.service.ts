@@ -1,12 +1,14 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
+import { environment } from '../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
-  private apiUrl = 'https://localhost:44386/api/Admin';
+  // private apiUrl = 'https://localhost:44386/api/Admin';
+  private apiUrl = `${environment.apiUrl}Admin`;
   constructor(private http:HttpClient) { }
 
 
