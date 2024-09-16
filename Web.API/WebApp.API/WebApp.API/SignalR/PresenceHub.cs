@@ -3,7 +3,7 @@
 
 //namespace WebApp.API.SignalR
 //{
-//    public class PresenceHub:Hub
+//    public class PresenceHub : Hub
 //    {
 
 //        private readonly PresenceTracker tracker;

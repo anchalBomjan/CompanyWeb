@@ -13,7 +13,7 @@ using System.Text;
 using WebApp.API;
 using WebApp.API.Helper;
 using WebApp.API.Services.IServices;
-using WebApp.API.SignalR;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +28,7 @@ builder.Services.AddCors();
 // Register DbConnector as a singleton
 builder.Services.AddSingleton<DbConnector>();
 //builder.Services.AddSingleton<PresenceTracker>();
-// builder.Services.AddSignalR();
+builder.Services.AddSignalR();
 builder.Services.AddSignalR(options =>
 {
     options.KeepAliveInterval = TimeSpan.FromSeconds(15); // Adjust as needed
@@ -164,7 +164,7 @@ app.UseAuthorization();
 app.MapControllers();
 
 //app.MapHub<PresenceHub>("hubs/presence");
-app.MapHub<MessageHub>("hubs/message");
+//app.MapHub<MessageHub>("hubs/message");
 
 app.Run();
 

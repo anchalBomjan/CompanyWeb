@@ -6,6 +6,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { TimeagoModule } from 'ngx-timeago';
 import { Message } from '../interface/message';
 import { Pagination } from '../interface/pagination';
+import { AdminService } from '../services/admin.service';
 import { MessageService } from '../services/message.service';
 
 @Component({
@@ -23,8 +24,8 @@ export class MessageComponent {
   pageNumber=1;
   pageSize=5;
   loading=false;
-  
-  constructor(private messageService: MessageService,private router:Router){
+  usersWithRoles: any[] = [];
+  constructor(private messageService: MessageService,private router:Router,private adminservice:AdminService){
     this.loadMessages();
   }
   
@@ -39,7 +40,23 @@ export class MessageComponent {
       
     })
   }
+  loadUserWithRole() {
+    this.loading = true;
   
+    this.adminservice.getAllUsersWithRoles().subscribe(
+      (response) => {
+        // Handling the successful response (next).
+        console.log('Users with roles received:', response);
+        this.usersWithRoles = response; // Assign response data to your local variable
+        this.loading = false; 
+      }
+   
+     
+    );
+  }
+  
+  
+ 
   deleteMessage(id:number){
    
   
@@ -56,9 +73,6 @@ export class MessageComponent {
 
   navigateToMessageThread(username: string): void {
   
-
-
-
     //focus for this route
      this.router.navigate(['app-hr/app-message-thread', username]);
     console.log('Navigating to message thread for:', username);
