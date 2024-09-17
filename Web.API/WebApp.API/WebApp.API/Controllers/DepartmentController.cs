@@ -11,6 +11,7 @@ namespace WebApp.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
  
    // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class DepartmentController : ControllerBase

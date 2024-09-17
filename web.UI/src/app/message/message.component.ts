@@ -27,6 +27,7 @@ export class MessageComponent {
   usersWithRoles: any[] = [];
   constructor(private messageService: MessageService,private router:Router,private adminservice:AdminService){
     this.loadMessages();
+
   }
   
   loadMessages(){

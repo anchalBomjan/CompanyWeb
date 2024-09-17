@@ -42,8 +42,9 @@ export class MessageThreadComponent {
           
           // If both current user and recipient usernames are available, create a Hub connection
           // if (this.recipientUsername) {
-          //   this.messageService.createHubConnection(user, this.recipientUsername);
+            this.messageService.createHubConnection(user, this.recipientUsername);
           // }
+          
         });
       }
     });
@@ -82,6 +83,7 @@ export class MessageThreadComponent {
           }
         });
     }
+    this.loadMessageThread();
   }
 
 

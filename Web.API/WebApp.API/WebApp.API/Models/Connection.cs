@@ -4,6 +4,7 @@ namespace WebApp.API.Models
 {
     public class Connection
     {
+        public Connection() { }
         public Connection(string connectionId, string username)
         {
             ConnectionId = connectionId;
@@ -11,8 +12,11 @@ namespace WebApp.API.Models
         }
         public string ConnectionId { get; set; }
         public string Username { get; set; }
-        public string? GroupName { get; set; }
 
-        public Group? Group { get; set; }
+
+
     }
 }
+    //public string? GroupName { get; set; }
+
+//public Group? Group { get; set; }

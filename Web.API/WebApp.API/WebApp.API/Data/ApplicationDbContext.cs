@@ -25,7 +25,7 @@ namespace WebApp.API.Data
         ///  Remove this   below Dbset  while  migration because it is developed by Database first approached  but   use entityframework  
         /// </summary>
 
-      
+
         public DbSet<Message> Messages { get; set; }
         public DbSet<Connection> Connections { get; set; }
         public DbSet<Group> Groups { get; set; }
@@ -81,8 +81,13 @@ namespace WebApp.API.Data
             //    relation   is  little bit complex so we   engagged in here  
 
             // Configure the primary key for the Groups table
+            //modelBuilder.Entity<Group>()
+            //    .HasKey(g => g.Name);
+
             modelBuilder.Entity<Group>()
-                .HasKey(g => g.Name);
+                .HasMany(g=>g.Connections)
+                .WithOne()
+                .OnDelete(DeleteBehavior.Cascade);
 
             // Configure the relationships and other entities
             modelBuilder.Entity<UserRole>()
@@ -110,13 +115,16 @@ namespace WebApp.API.Data
                 .HasForeignKey(m => m.RecipientId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Connection>()
-                .HasOne(c => c.Group)
-                .WithMany(g => g.Connections)
-                .HasForeignKey(c => c.GroupName)  // Ensure the foreign key is correctly defined
-                .OnDelete(DeleteBehavior.SetNull);
-        }
+            modelBuilder.Entity<Group>()
+                .HasMany(g => g.Connections);
+                
+                
+                
 
+
+
+
+        }
     }
-}  
+}
 
