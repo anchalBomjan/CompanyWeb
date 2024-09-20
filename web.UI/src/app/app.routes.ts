@@ -1,5 +1,4 @@
 
-import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { LogInComponent } from './Account/log-in/log-in.component';
 import { RegistrationComponent } from './Account/registration/registration.component';
@@ -33,6 +32,8 @@ export const routes: Routes = [
 {
     path: 'app-admin',
     component: AdminComponent,
+    canActivate: [authGuard],
+    data: { role: 'Admin' }, // Admin role required
     children: [
       { path: 'app-roles', component: RolesComponent },
       { path: 'get-all-roles', component: RolesComponent }, // Example child route
@@ -49,6 +50,7 @@ export const routes: Routes = [
      
       {path: 'app-dapartmentwith-designation',component:DepartmentwithDesignationComponent},
       {path:'app-message',component:MessageComponent},
+      { path: 'app-message-thread/:username', component:MessageThreadComponent }
 
     ]
   },
@@ -59,6 +61,8 @@ export const routes: Routes = [
   
    path:'app-hr',
    component:HRComponent,
+   canActivate: [authGuard],
+   data: { role: 'Hr' }, // HR role required
    children: [
       {path:'app-employee-create', component:EmployeeCreateComponent},
       {path:'app-employee-list',component:EmployeeListComponent},
@@ -78,12 +82,6 @@ export const routes: Routes = [
 
      ]   
    },
-  
-   
-
 {path:'app-user',component:UserComponent},
-
-
-
 ];
 

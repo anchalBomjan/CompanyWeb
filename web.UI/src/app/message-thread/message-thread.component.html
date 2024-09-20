@@ -1,49 +1,23 @@
-<!-- <div class="chatbox">
-    
-    <div class="messages-area">
-      <div *ngFor="let message of messages" 
-           class="message" 
-           [ngClass]="{'sent': message.senderUsername === currentUsername, 
-                       'received': message.senderUsername !== currentUsername}">
-        <div class="message-header">
-          <strong>{{ message.senderUsername }}</strong> to <strong>{{ message.recipientUsername }}</strong>
-          <span class="timestamp">{{ message.messageSent | date:'shortTime' }}</span>
-        </div>
-        <div class="message-body">
-          {{ message.content }}
-        </div>
+<div class="chatbox">
+  <!-- Message Display Area -->
+  <div class="messages-area">
+    <div *ngFor="let message of messages" 
+         class="message" 
+         [ngClass]="{'sent': message.senderUsername === currentUsername, 
+                     'received': message.senderUsername !== currentUsername}">
+      <div class="message-header">
+        <strong>{{ message.senderUsername }}</strong>
+        <span class="timestamp">{{ message.messageSent | date:'shortTime' }}</span>
+      </div>
+      <div class="message-body">
+        {{ message.content }}
       </div>
     </div>
-  
-    
-    <div class="message-input">
-      <input [(ngModel)]="newMessage" type="text" placeholder="Type your message..." (keydown.enter)="sendMessage()" />
-      <button (click)="sendMessage()">Send</button>
-    </div>
   </div>
-   -->
 
-   <div class="chatbox">
-    <!-- Message Display Area -->
-    <div class="messages-area">
-      <div *ngFor="let message of messages" 
-           class="message" 
-           [ngClass]="{'sent': message.senderUsername === currentUsername, 
-                       'received': message.senderUsername !== currentUsername}">
-        <div class="message-header">
-          <strong>{{ message.senderUsername }}</strong>
-          <span class="timestamp">{{ message.messageSent | date:'shortTime' }}</span>
-        </div>
-        <div class="message-body">
-          {{ message.content }}
-        </div>
-      </div>
-    </div>
-  
-    <!-- Message Input Area -->
-    <div class="message-input">
-      <input [(ngModel)]="newMessage" type="text" placeholder="Type your message..." (keydown.enter)="sendMessage()" />
-      <button (click)="sendMessage()">Send</button>
-    </div>
+  <!-- Message Input Area -->
+  <div class="message-input">
+    <input [(ngModel)]="newMessage" type="text" placeholder="Type your message..." (keydown.enter)="sendMessage()" />
+    <button (click)="sendMessage()">Send</button>
   </div>
-  
+</div>

@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Microsoft.EntityFrameworkCore;
-
-
 using WebApp.API.Data;
 using WebApp.API.Helper;
 using WebApp.API.Models;

@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-hr',
@@ -12,5 +13,6 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
   styleUrl: './hr.component.css'
 })
 export class HRComponent {
+ 
 
 }

@@ -8,6 +8,7 @@ using WebApp.API.Repositories.IRepository;
 using Microsoft.AspNetCore.Authorization;
 
 using WebApp.API.Helper;
+using WebApp.API.Repositories;
 
 namespace WebApp.API.Controllers
 {
@@ -86,8 +87,14 @@ namespace WebApp.API.Controllers
 
             return Ok(messages);
         }
+        [HttpGet("thread/{username}")]
+        public async Task<ActionResult<IEnumerable<MessageDto>>> GetMessageThread(string username)
+        {
+            var currentUsername = User.GetUsername(); // Ensure the user is authenticated
+            var messages = await unitOfWork.MessageRepository.GetMessageThread(currentUsername, username);
 
-
+            return Ok(messages);  // Return the messages between the current user and the specified user
+        }
 
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteMessage(int id)
@@ -110,15 +117,11 @@ namespace WebApp.API.Controllers
 
             return BadRequest("Problem deleting the message");
         }
-        [HttpGet("thread/{username}")]
-        public async Task<ActionResult<IEnumerable<MessageDto>>> GetMessageThread(string username)
-        {
-            var currentUsername = User.GetUsername(); // Ensure the user is authenticated
-            var messages = await unitOfWork.MessageRepository.GetMessageThread(currentUsername, username);
-
-            return Ok(messages);  // Return the messages between the current user and the specified user
-        }
+     
 
 
     }
 }
+
+
+

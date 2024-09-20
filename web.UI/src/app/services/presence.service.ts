@@ -14,8 +14,6 @@ import { IUser } from '../interface/User';
 export class PresenceService {
 
   hubUrl =environment.hubUrl;
-
-
   private hubConnection:HubConnection
   private onlineUserSource = new BehaviorSubject<string[]> ([]);
   onlineUsers$ =this.onlineUserSource.asObservable();
@@ -57,11 +55,7 @@ export class PresenceService {
       .subscribe(()=>this.router.navigateByUrl('/members/' +username + '?tab=3'))
     })
   }
-
   stopHubConnection(){
     this.hubConnection.stop().catch(error=>console.log(error));
   }
-
- 
-
 }

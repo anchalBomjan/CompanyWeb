@@ -1,4 +1,71 @@
+// import { CommonModule } from '@angular/common';
+// import { Component } from '@angular/core';
+// import { FormsModule } from '@angular/forms';
+// import { ActivatedRoute } from '@angular/router';
+// import { TimeagoModule } from 'ngx-timeago';
+// import { Message } from '../interface/message';
+// import { IUser } from '../interface/User';
+// import { AuthService } from '../services/auth.service';
+// import { MessageService } from '../services/message.service';
 
+// @Component({
+//   selector: 'app-message-thread',
+//   standalone: true,
+//   imports: [FormsModule, CommonModule, TimeagoModule],
+//   templateUrl: './message-thread.component.html',
+//   styleUrls: ['./message-thread.component.css']
+// })
+// export class MessageThreadComponent {
+//   currentUsername: string | null = null;
+//   recipientUsername: string | null = null;
+//   messages: Message[] = [];
+//   newMessage = '';
+
+//   constructor(
+//     private messageService: MessageService,
+//     private authService: AuthService,
+//     private route: ActivatedRoute
+//   ) {
+//     // Get the current user and recipient
+//     this.authService.currentUser$.subscribe((user: IUser | null) => {
+//       if (user) {
+//         this.currentUsername = user.Username;
+
+//         // Get recipient's username from route params
+//         this.route.paramMap.subscribe(params => {
+//           this.recipientUsername = params.get('username') ?? '';
+//           this.messageService.createHubConnection(user, this.recipientUsername);
+//         });
+//       }
+//     });
+
+//     // Load the message thread
+//     this.route.params.subscribe(() => {
+//       this.loadMessageThread();
+//     });
+//   }
+
+//   loadMessageThread(): void {
+//     if (this.recipientUsername) {
+//       this.messageService.getMessageThread(this.recipientUsername).subscribe({
+//         next: (response: Message[]) => {
+//           this.messages = response;
+//         },
+//         error: (err) => {
+//           console.error('Error fetching message thread:', err);
+//         }
+//       });
+//     }
+//   }
+
+//   sendMessage(): void {
+//     if (this.newMessage.trim() && this.recipientUsername) {
+//       this.messageService.sendMessage(this.recipientUsername, this.newMessage);
+//       this.newMessage = '';  // Clear the input field
+//       this.loadMessageThread();  // Reload messages after sending
+//     }
+//   }
+// }
 
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';

@@ -1,5 +1,4 @@
 
-
 using Microsoft.EntityFrameworkCore;
 using WebApp.API.Data;
 using WebApp.API.Repositories.IRepository;
@@ -14,6 +13,7 @@ using WebApp.API;
 using WebApp.API.Helper;
 using WebApp.API.Services.IServices;
 using WebApp.API.SignalR;
+using Datingapp.API.SignalR;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,11 +30,11 @@ builder.Services.AddCors();
 builder.Services.AddSingleton<DbConnector>();
 builder.Services.AddSingleton<PresenceTracker>();
 builder.Services.AddSignalR();
-//builder.Services.AddSignalR(options =>
-//{
-//    options.KeepAliveInterval = TimeSpan.FromSeconds(30); // Adjust as needed
-//    options.HandshakeTimeout = TimeSpan.FromSeconds(60);
-//});
+builder.Services.AddSignalR(options =>
+{
+    options.KeepAliveInterval = TimeSpan.FromSeconds(30); // Adjust as needed
+    options.HandshakeTimeout = TimeSpan.FromSeconds(60);
+});
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Register repositories using scoped lifetimes
 builder.Services.AddScoped<IUserRepository, UserRepository>();
@@ -166,6 +166,7 @@ app.MapControllers();
 
 app.MapHub<PresenceHub>("hubs/presence");
 app.MapHub<MessageHub>("hubs/message");
+//app.MapHub<MessageHub>("/api/MessageHub");
 
 app.Run();
 
